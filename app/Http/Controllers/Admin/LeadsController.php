@@ -50,9 +50,7 @@ class LeadsController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : "";
             });
-            $table->editColumn('title', function ($row) {
-                return $row->title ? $row->title : "";
-            });
+            
             $table->addColumn('status_name', function ($row) {
                 return $row->status ? $row->status->name : '';
             });
@@ -74,8 +72,8 @@ class LeadsController extends Controller
                 return $row->category ? $row->category->color : '#000000';
             });
 
-            $table->addColumn('name', function ($row) {
-                return $row->name ? $row->fname.' '.$row->lname : "";
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname.' '.$row->lname : "";
             });
             
             $table->addColumn('assigned_to_user_name', function ($row) {
@@ -119,9 +117,10 @@ class LeadsController extends Controller
     }
 
     public function store(StoreLeadRequest $request)
-    {
-        $lead = Lead::create($request->all());
-
+    {    
+        $dataToSave= $request->all();
+        $dataToSave['questions']=json_encode($dataToSave['questions']);
+        $lead = Lead::create($dataToSave);
         foreach ($request->input('attachments', []) as $file) {
             $lead->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
         }

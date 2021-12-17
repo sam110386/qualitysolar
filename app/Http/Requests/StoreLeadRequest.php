@@ -19,16 +19,21 @@ class StoreLeadRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'       => [
+            'fname'       => [
+                'required',
+            ],
+            'lname'       => [
+                'required',
+            ],
+            'email'       => [
                 'required',
             ],
             'status_id'   => [
                 'required',
                 'integer',
             ],
-            'priority_id' => [
-                'required',
-                'integer',
+            'phone' => [
+                'required'
             ],
             'category_id' => [
                 'required',

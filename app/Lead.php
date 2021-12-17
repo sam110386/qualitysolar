@@ -29,17 +29,20 @@ class Lead extends Model implements HasMedia
     ];
 
     protected $fillable = [
-        'title',
-        'content',
+        'fname',
+        'lname',
         'status_id',
         'created_at',
         'updated_at',
         'deleted_at',
-        'priority_id',
+        'email',
         'category_id',
-        'author_name',
-        'author_email',
+        'phone',
+        'questions',
         'assigned_to_user_id',
+        'ev_charger_type',
+        "make",
+        "model"
     ];
 
     public static function boot()
@@ -71,10 +74,10 @@ class Lead extends Model implements HasMedia
         return $this->belongsTo(Status::class, 'status_id');
     }
 
-    public function priority()
+    /*public function priority()
     {
         return $this->belongsTo(Priority::class, 'priority_id');
-    }
+    }*/
 
     public function category()
     {
@@ -88,11 +91,11 @@ class Lead extends Model implements HasMedia
 
     public function scopeFilterLeads($query)
     {
-        $query->when(request()->input('priority'), function($query) {
+        $query/*->when(request()->input('priority'), function($query) {
                 $query->whereHas('priority', function($query) {
                     $query->whereId(request()->input('priority'));
                 });
-            })
+            })*/
             ->when(request()->input('category'), function($query) {
                 $query->whereHas('category', function($query) {
                     $query->whereId(request()->input('category'));

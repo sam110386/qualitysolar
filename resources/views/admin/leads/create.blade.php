@@ -71,35 +71,50 @@
                 @endif
             </div>
             <div id="regidential">
-            <div class="form-group {{ $errors->has('ev_charger_type') ? 'has-error' : '' }}">
-                <label for="category">{{ trans('EV Charger Type') }}*</label>
-                <select name="ev_charger_type" id="ev_charger_type" class="form-control select2" required>
-                    @foreach(config('product.regidential_ev_charger_types') as $product)
-                        <option value="{{ $product['alias'] }}" {{ (isset($lead) && $lead->ev_charger_type ? $lead->ev_charger_type : old('ev_charger_type')) == $product['alias'] ? 'selected' : '' }}>{{ $product['title'] }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('ev_charger_type'))
-                    <em class="invalid-feedback">
-                        {{ $errors->first('ev_charger_type') }}
-                    </em>
-                @endif
-            </div>
-
+                <div class="form-group {{ $errors->has('ev_charger_type') ? 'has-error' : '' }}">
+                    <label for="category">{{ trans('EV Charger Type') }}*</label>
+                    <select name="ev_charger_type" id="ev_charger_type" class="form-control select2" required>
+                        @foreach(config('product.regidential_ev_charger_types') as $product)
+                            <option value="{{ $product['alias'] }}" {{ (isset($lead) && $lead->ev_charger_type ? $lead->ev_charger_type : old('ev_charger_type')) == $product['alias'] ? 'selected' : '' }}>{{ $product['title'] }}</option>
+                        @endforeach
+                    </select>
+                    @if($errors->has('ev_charger_type'))
+                        <em class="invalid-feedback">
+                            {{ $errors->first('ev_charger_type') }}
+                        </em>
+                    @endif
+                </div>
+                @foreach(config('product.assesment_questions') as $question)
+                <div class="form-group {{ $errors->has($question['name']) ? 'has-error' : '' }}">
+                    <label for="{{$question['name']}}">{{ $question['title'] }}*</label>
+                    @if($question['type']=='radio')
+                        <div class="radio-group">
+                        @foreach($question['options'] as $key=>$lab )
+                        <div class="col-sm-4">
+                            <input type="radio" id="questions_{{$question['name']}}" name="questions[{{$question['name']}}]" value="{{$key}}" class="formcontrol"   /> {{$lab}}
+                        </div>
+                        @endforeach
+                        </div>
+                    @endif
+                    @if($question['type']=='checkbox')
+                        <div class="checkbox-group">
+                        @foreach($question['options'] as $key=>$lab )
+                        <div class="col-sm-4">
+                            <input type="checkbox" id="questions_{{$key}}" name="questions[{{$question['name']}}][]" value="{{$key}}" class="formcontrol"   /> {{$lab}}
+                        </div>
+                        @endforeach
+                        </div>
+                    @endif
+                    @if($question['type']=='input')
+                        <input type="input" id="questions_{{$key}}" name="questions[{{$key}}]" class="form-control"   /> 
+                     @endif
+                    
+                </div>
+                @endforeach
             </div>
             
 
-            <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
-                <label for="content">{{ trans('cruds.lead.fields.content') }}</label>
-                <textarea id="content" name="content" class="form-control ">{{ old('content', isset($lead) ? $lead->content : '') }}</textarea>
-                @if($errors->has('content'))
-                    <em class="invalid-feedback">
-                        {{ $errors->first('content') }}
-                    </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.lead.fields.content_helper') }}
-                </p>
-            </div>
+            
             <div class="form-group {{ $errors->has('attachments') ? 'has-error' : '' }}">
                 <label for="attachments">{{ trans('cruds.lead.fields.attachments') }}</label>
                 <div class="needsclick dropzone" id="attachments-dropzone">
@@ -129,33 +144,9 @@
             </div>
             
             
-            <div class="form-group {{ $errors->has('author_name') ? 'has-error' : '' }}">
-                <label for="author_name">{{ trans('cruds.lead.fields.author_name') }}</label>
-                <input type="text" id="author_name" name="author_name" class="form-control" value="{{ old('author_name', isset($lead) ? $lead->author_name : '') }}">
-                @if($errors->has('author_name'))
-                    <em class="invalid-feedback">
-                        {{ $errors->first('author_name') }}
-                    </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.lead.fields.author_name_helper') }}
-                </p>
-            </div>
-            <div class="form-group {{ $errors->has('author_email') ? 'has-error' : '' }}">
-                <label for="author_email">{{ trans('cruds.lead.fields.author_email') }}</label>
-                <input type="text" id="author_email" name="author_email" class="form-control" value="{{ old('author_email', isset($lead) ? $lead->author_email : '') }}">
-                @if($errors->has('author_email'))
-                    <em class="invalid-feedback">
-                        {{ $errors->first('author_email') }}
-                    </em>
-                @endif
-                <p class="helper-block">
-                    {{ trans('cruds.lead.fields.author_email_helper') }}
-                </p>
-            </div>
             @if(auth()->user()->isAdmin())
                 <div class="form-group {{ $errors->has('assigned_to_user_id') ? 'has-error' : '' }}">
-                    <label for="assigned_to_user">{{ trans('cruds.lead.fields.assigned_to_user') }}</label>
+                    <label for="assigned_to_user">{{ trans('Dealer') }}</label>
                     <select name="assigned_to_user_id" id="assigned_to_user" class="form-control select2">
                         @foreach($assigned_to_users as $id => $assigned_to_user)
                             <option value="{{ $id }}" {{ (isset($lead) && $lead->assigned_to_user ? $lead->assigned_to_user->id : old('assigned_to_user_id')) == $id ? 'selected' : '' }}>{{ $assigned_to_user }}</option>
