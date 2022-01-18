@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.user.title') }}
+        {{ trans('global.show') }} Dealer
     </div>
 
     <div class="card-body">
@@ -36,6 +36,14 @@
                     </tr>
                     <tr>
                         <th>
+                            Phone
+                        </th>
+                        <td>
+                            {{ $user->phone }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.user.fields.email_verified_at') }}
                         </th>
                         <td>
@@ -44,17 +52,20 @@
                     </tr>
                     <tr>
                         <th>
-                            Roles
+                            Verified
                         </th>
                         <td>
-                            @foreach($user->roles as $id => $roles)
-                                <span class="label label-info label-many">{{ $roles->title }}</span>
-                            @endforeach
+                            @if($user->is_approved)
+                            <span class="badge badge-success">Yes</span>
+                            @else
+                            <span class="badge badge-danger">No</span>
+                            @endif
+
                         </td>
                     </tr>
                 </tbody>
             </table>
-            <a style="margin-top:20px;" class="btn btn-default" href="{{ url()->previous() }}">
+            <a class="btn btn-primary" href="{{ url()->previous() }}">
                 {{ trans('global.back_to_list') }}
             </a>
         </div>

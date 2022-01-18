@@ -1,6 +1,6 @@
 <?php
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesTableSeeder extends Seeder
@@ -17,8 +17,7 @@ class CategoriesTableSeeder extends Seeder
             "Residential", "Commercial"
         ];
 
-        foreach($categories as $category)
-        {
+        foreach ($categories as $category) {
             Category::create([
                 'name'  => $category,
                 'color' => $faker->hexcolor

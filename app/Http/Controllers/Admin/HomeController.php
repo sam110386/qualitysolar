@@ -20,6 +20,6 @@ class HomeController
             $query->whereName('Closed');
         })->count();
 
-        return view('home', compact('totalLeads', 'openLeads', 'closedLeads'));
+        return view('admin.home', compact('totalLeads', 'openLeads', 'closedLeads'));
     }
 }

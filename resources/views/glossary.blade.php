@@ -80,7 +80,7 @@
 						<div class=" text-center">
 							<a href="#" class="pull text-dark">CHAdeMO</a>
 							<div class="pull-show d-none">
-								CHAdeMO is the trade name of a fast-charging method for battery electric vehicles delivering up to 62.5 kW by 500 V, 125 A direct current via a special electrical connector. A revised CHAdeMO 2.0 specification allows for up to 400 kW by 1000 V, 400A direct current. 
+								CHAdeMO is the trade name of a fast-charging method for battery electric vehicles delivering up to 62.5 kW by 500 V, 125 A direct current via a special electrical connector. A revised CHAdeMO 2.0 specification allows for up to 400 kW by 1000 V, 400A direct current.
 								Examples of vehicles that use CHAdeMO are Mitsubishi and Nissan.
 							</div>
 						</div>
@@ -111,8 +111,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -179,8 +178,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -234,7 +232,7 @@
 						<div class=" text-center">
 							<a href="#" class="pull text-dark">ICE or ICEV (Internal Combustion Engine Vehicle)</a>
 							<div class="pull-show d-none">
-								A vehicle that is powered by an internal combustion engine (ICE). ICEV uses fuel which combusts inside a combustion chamber with the help of an oxidizer (typically oxygen from the air). This means that to get power, ICEVs  burn fuel.
+								A vehicle that is powered by an internal combustion engine (ICE). ICEV uses fuel which combusts inside a combustion chamber with the help of an oxidizer (typically oxygen from the air). This means that to get power, ICEVs burn fuel.
 							</div>
 						</div>
 						<div class=" text-center">
@@ -246,8 +244,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -331,8 +328,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -399,8 +395,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -485,8 +480,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -518,7 +512,7 @@
 						<div class=" text-center">
 							<a href="#" class="pull text-dark">TESLA SUPERCHARGER</a>
 							<div class="pull-show d-none">
-								A Tesla Supercharger is a 480v (V) direct current fast-charging technology built by American vehicle manufacturer Tesla, Inc. for their electric cars. 
+								A Tesla Supercharger is a 480v (V) direct current fast-charging technology built by American vehicle manufacturer Tesla, Inc. for their electric cars.
 							</div>
 						</div>
 						<div class=" text-center">
@@ -552,8 +546,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -620,8 +613,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row mt-5">
+
 			<div class="col-lg-4 col-md-6">
 				<div class="pricing-box">
 					<div class="dflex align-items-center">
@@ -653,7 +645,7 @@
 						<div class=" text-center">
 							<a href="#" class="pull text-dark">ZEV</a>
 							<div class="pull-show d-none">
-								A vehicle that emits no tailpipe pollutants from the onboard source of power. Zero Emissions Vehicles include hydrogen fuel cell and fully electric vehicles. 
+								A vehicle that emits no tailpipe pollutants from the onboard source of power. Zero Emissions Vehicles include hydrogen fuel cell and fully electric vehicles.
 							</div>
 						</div>
 						<!-- <div class=" text-center">
@@ -686,8 +678,8 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div> -->
+			</div>-->
+		</div>
 	</div>
 </section>
 

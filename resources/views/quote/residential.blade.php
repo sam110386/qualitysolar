@@ -106,19 +106,172 @@
                     <div class="text-center head_box">
                         <h2>Here are the EV chargers we provide based on your vehicle.</h2>
                     </div>
-                    <div class="form_box charger_box">
+                    <div class="form_box charger_box pricingTbl">
                         <div class="form-row">
                             <div class="col">
-                                <input type="radio" class="form-check-input d-none " name="ev_chargers_type" id="ev_chargers_type1" required checked>
-                                <label class="form-check-label" for="ev_chargers_type1"><img src="/img/chargers.png" alt="" value="Charger Point Homeflex" /></label>
+                                <input type="radio" class="form-check-input d-none " name="ev_chargers_type" id="ev_chargers_type1" value="Charger Point Homeflex" required checked>
+                                <label class="form-check-label" for="ev_chargers_type1">
+                                    <div class="pricing-box">
+                                        <div class="d-flex align-items-center">
+                                            <div class="pri-box-img"><img src="/img/chargepoint-home-flex.png" alt=""></div>
+                                            <div class="pri-box-Txt">
+                                                <h5>CHARGE POINT HOMEFLEX</h5> <img src="/img/price-bg-shape.png"> <span>$699.99</span>
+                                            </div>
+                                        </div>
+                                        <div class="multi-btn d-flex align-items-center"><span class="icon_btn"><img src="/img/btn-icon1.png" alt=""><span>11.2kW</span></span> <span class="icon_btn"><img src="/img/btn-icon2.png" alt=""><span>25ft Cable</span></span> <span class="icon_btn"><img src="/img/btn-icon3.png" alt=""><span>Power Share</span></span></div>
+                                        <div class="price_tble">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td> Max. Charge</td>
+                                                        <td> 11.5kW</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Amperage</td>
+                                                        <td> 60 amp</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Input Voltage</td>
+                                                        <td> 240v</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Connectivity</td>
+                                                        <td> Wi-Fi/Smartphone</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Warranty</td>
+                                                        <td> 3 years</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Cable Length</td>
+                                                        <td> 25ft</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Safety</td>
+                                                        <td> UL Listed</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Efficiency </td>
+                                                        <td> Energy Star Certified</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="see_more">See More</div>
+                                    </div>
+                                </label>
                             </div>
                             <div class="col">
-                                <input type="radio" class="form-check-input d-none" name="ev_chargers_type" id="ev_chargers_type2">
-                                <label class="form-check-label" for="ev_chargers_type2"><img src="/img/chargers2.png" alt="" value="Enelx Juicebox 48" /></label>
+                                <input type="radio" class="form-check-input d-none" name="ev_chargers_type" id="ev_chargers_type2" value="Enelx Juicebox 48">
+                                <label class="form-check-label" for="ev_chargers_type2">
+                                    <div class="pricing-box">
+                                        <div class="d-flex align-items-center">
+                                            <div class="pri-box-img"><img src="/img/Enel-X-80-Pro.png" alt="" style="max-width: 90%;"></div>
+                                            <div class="pri-box-Txt">
+                                                <h5>ENEL X JUICEBOX PRO 80</h5> <img src="/img/price-bg-shape.png"> <span>$1,599.99</span>
+                                            </div>
+                                        </div>
+                                        <div class="multi-btn d-flex align-items-center"><span class="icon_btn"><img src="/img/btn-icon1.png" alt=""><span>19.2kW</span></span> <span class="icon_btn"><img src="/img/btn-icon2.png" alt=""><span>25ft Cable</span></span> <span class="icon_btn"><img src="/img/btn-icon3.png" alt=""><span>Power Share</span></span></div>
+                                        <div class="price_tble">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td> Max. Charge</td>
+                                                        <td> 19.2kW</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Amperage</td>
+                                                        <td> 80 amp</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Input Voltage</td>
+                                                        <td> 240v</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Connectivity</td>
+                                                        <td> Wi-Fi/Smartphone</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Warranty</td>
+                                                        <td> 3 years</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Cable Length</td>
+                                                        <td> 25ft</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Safety</td>
+                                                        <td> UL Listed</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Efficiency </td>
+                                                        <td> Energy Star Certified</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="see_more">
+                                            See More
+                                        </div>
+                                    </div>
+                                </label>
                             </div>
                             <div class="col">
-                                <input type="radio" class="form-check-input d-none" name="ev_chargers_type" id="ev_chargers_type3">
-                                <label class="form-check-label" for="ev_chargers_type3"><img src="/img/chargers3.png" alt="" value="Walbox Pulsar Plus 48" /></label>
+                                <input type="radio" class="form-check-input d-none" name="ev_chargers_type" id="ev_chargers_type3" value="Walbox Pulsar Plus 48">
+                                <label class="form-check-label" for="ev_chargers_type3">
+                                    <div class="pricing-box">
+                                        <div class="d-flex align-items-center">
+                                            <div class="pri-box-img"><img src="/img/Blink-IQ-200-Level-2-1.png" alt=""></div>
+                                            <div class="pri-box-Txt">
+                                                <h5>BLINK IQ 200 LEVEL 2
+                                                </h5> <img src="/img/price-bg-shape.png"> <span>$3,499.99
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="multi-btn d-flex align-items-center"><span class="icon_btn"><img src="/img/btn-icon1.png" alt=""><span>19.2kW</span></span> <span class="icon_btn"><img src="/img/btn-icon2.png" alt=""><span>25ft Cable</span></span> <span class="icon_btn"><img src="/img/btn-icon3.png" alt=""><span>Power Share</span></span></div>
+                                        <div class="price_tble">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td> Max. Charge</td>
+                                                        <td>19.2kW</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Amperage</td>
+                                                        <td> 100 amp</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Input Voltage</td>
+                                                        <td> 240v</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Connectivity</td>
+                                                        <td> Wi-Fi/Smartphone</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Warranty</td>
+                                                        <td> 3 years</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Cable Length</td>
+                                                        <td> 25ft</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Safety</td>
+                                                        <td> UL Listed</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td> Efficiency </td>
+                                                        <td> Energy Star Certified</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="see_more">
+                                            See More
+                                        </div>
+                                    </div>
+                                </label>
                             </div>
                         </div>
                         <div class="custom-control custom-radio custm_radio">
@@ -174,7 +327,7 @@
                         <li><button type="button" class="default-btn prev-step">Prev</button> <button type="button" class="default-btn next-step">Next</button></li>
                     </ul>
                     <div class="text-center by_click">
-                        <p>By clicking on Next, you are agreeing to our Terms and Privacy</p>
+                        <p>By clicking on Next, you are agreeing to our <a href="/terms-of-use" target="_blank">Terms</a> and <a href="/privacy-policy" target="_blank">Privacy</a></p>
                     </div>
                 </div>
                 <div class="tab-pane" role="tabpanel" id="step6">
@@ -659,6 +812,18 @@
         });*/
         $.ajaxSetup({
             cache: false
+        });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $(".see_more").click(function() {
+            $(this).siblings('.price_tble').toggleClass("show_table");
+            if ($(".price_tble").hasClass("show_table")) {
+                $(this).text("See Less");
+            } else {
+                $(this).text("See More");
+            };
         });
     });
 </script>

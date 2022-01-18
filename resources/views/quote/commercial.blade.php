@@ -139,7 +139,7 @@
                         <li><button type="button" class="default-btn prev-step">Prev</button> <button type="button" class="default-btn next-step">Next</button></li>
                     </ul>
                     <div class="text-center by_click">
-                        <p>By clicking on Submit, you are agreeing to our Terms and Privacy</p>
+                        <p>By clicking on Submit, you are agreeing to our <a href="/terms-of-use" target="_blank">Terms</a> and <a href="/privacy-policy" target="_blank">Privacy</a></p>
                     </div>
                 </div>
                 <div class="tab-pane" role="tabpanel" id="step6">

@@ -25,8 +25,8 @@ class Priority extends Model
         'deleted_at',
     ];
 
-    public function tickets()
+    public function leads()
     {
-        return $this->hasMany(Ticket::class, 'priority_id', 'id');
+        return $this->hasMany(Lead::class, 'priority_id', 'id');
     }
 }

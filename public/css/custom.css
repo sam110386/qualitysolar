@@ -148,6 +148,7 @@ img {
 }
 .glossary .pricing-box {
     min-height: 250px;
+    margin-bottom: 30px;
 }
 .career .dflex {
     min-height: 150px;
@@ -988,7 +989,15 @@ a.btn {
     font-weight: 400;
 }
 /* about page css end here ===== */
-
+.pricingTbl {
+    max-width: 1000px;
+}
+.pricingTbl input:checked ~ .form-check-label {
+    border: none;
+}
+.charger_box input:checked ~ .form-check-label .pricing-box {
+    box-shadow: 1px 2px 15px #efc523;
+}
 @media (max-width: 1024px) {
     .tstimonial_box {
         min-height: 225px;

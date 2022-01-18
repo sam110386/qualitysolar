@@ -25,8 +25,8 @@ class Category extends Model
         'deleted_at',
     ];
 
-    public function tickets()
+    public function leads()
     {
-        return $this->hasMany(Ticket::class, 'category_id', 'id');
+        return $this->hasMany(Lead::class, 'category_id', 'id');
     }
 }

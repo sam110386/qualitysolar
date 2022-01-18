@@ -18,7 +18,9 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::all();
+        $users = User::whereHas("roles", function ($q) {
+            $q->where("title", "Dealer");
+        })->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -35,7 +37,7 @@ class UsersController extends Controller
     public function store(StoreUserRequest $request)
     {
         $user = User::create($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $user->roles()->sync(2);
 
         return redirect()->route('admin.users.index');
     }

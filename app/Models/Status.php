@@ -25,8 +25,8 @@ class Status extends Model
         'deleted_at',
     ];
 
-    public function tickets()
+    public function leads()
     {
-        return $this->hasMany(Ticket::class, 'status_id', 'id');
+        return $this->hasMany(Lead::class, 'status_id', 'id');
     }
 }

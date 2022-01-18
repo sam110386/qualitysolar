@@ -1,6 +1,6 @@
 <?php
 
-use App\Status;
+use App\Models\Status;
 use Illuminate\Database\Seeder;
 
 class StatusesTableSeeder extends Seeder
@@ -14,11 +14,10 @@ class StatusesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         $statuses = [
-            'New', 'Active','Complete','Canceled'
+            'New', 'Active', 'Complete', 'Canceled'
         ];
 
-        foreach($statuses as $status)
-        {
+        foreach ($statuses as $status) {
             Status::create([
                 'name'  => $status,
                 'color' => $faker->hexcolor

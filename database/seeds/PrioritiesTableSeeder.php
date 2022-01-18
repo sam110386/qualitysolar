@@ -1,6 +1,6 @@
 <?php
 
-use App\Priority;
+use App\Models\Priority;
 use Illuminate\Database\Seeder;
 
 class PrioritiesTableSeeder extends Seeder
@@ -17,8 +17,7 @@ class PrioritiesTableSeeder extends Seeder
             'Low', 'Medium', 'High'
         ];
 
-        foreach($priorities as $priority)
-        {
+        foreach ($priorities as $priority) {
             Priority::create([
                 'name'  => $priority,
                 'color' => $faker->hexcolor

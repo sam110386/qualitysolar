@@ -3,25 +3,46 @@
 
         <ul class="nav">
             @can('dashboard_access')
-                <li class="nav-item">
-                    <a href="{{ route("admin.home") }}" class="nav-link">
-                        <i class="nav-icon fas fa-fw fa-tachometer-alt">
+            <li class="nav-item">
+                <a href="{{ route("admin.home") }}" class="nav-link">
+                    <i class="nav-icon fas fa-fw fa-tachometer-alt">
 
-                        </i>
-                        {{ trans('global.dashboard') }}
-                    </a>
-                </li>
+                    </i>
+                    {{ trans('global.dashboard') }}
+                </a>
+            </li>
+            @endcan
+            @can('user_access')
+            <li class="nav-item">
+                <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-user nav-icon">
+
+                    </i>
+                    Dealers
+                </a>
+            </li>
             @endcan
             <?php /*
             @can('user_management_access')
-                <li class="nav-item nav-dropdown">
-                    <a class="nav-link  nav-dropdown-toggle" href="#">
-                        <i class="fa-fw fas fa-users nav-icon">
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link  nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-users nav-icon">
 
-                        </i>
-                        {{ trans('cruds.userManagement.title') }}
-                    </a>
-                    <ul class="nav-dropdown-items">
+                    </i>
+                    {{ trans('cruds.userManagement.title') }}
+                </a>
+                <ul class="nav-dropdown-items">
+                    @can('user_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-user nav-icon">
+
+                            </i>
+                            {{ trans('cruds.user.title') }}
+                        </a>
+                    </li>
+                    @endcan
+                     
                         @can('permission_access')
                             <li class="nav-item">
                                 <a href="{{ route("admin.permissions.index") }}" class="nav-link {{ request()->is('admin/permissions') || request()->is('admin/permissions/*') ? 'active' : '' }}">
@@ -42,16 +63,7 @@
                                 </a>
                             </li>
                         @endcan
-                        @can('user_access')
-                            <li class="nav-item">
-                                <a href="{{ route("admin.users.index") }}" class="nav-link {{ request()->is('admin/users') || request()->is('admin/users/*') ? 'active' : '' }}">
-                                    <i class="fa-fw fas fa-user nav-icon">
-
-                                    </i>
-                                    {{ trans('cruds.user.title') }}
-                                </a>
-                            </li>
-                        @endcan
+                        
                         @can('audit_log_access')
                             <li class="nav-item">
                                 <a href="{{ route("admin.audit-logs.index") }}" class="nav-link {{ request()->is('admin/audit-logs') || request()->is('admin/audit-logs/*') ? 'active' : '' }}">
@@ -62,9 +74,12 @@
                                 </a>
                             </li>
                         @endcan
+                    
                     </ul>
                 </li>
-            @endcan
+            @endcan 
+        */ ?>
+            <?php /*
             @can('status_access')
                 <li class="nav-item">
                     <a href="{{ route("admin.statuses.index") }}" class="nav-link {{ request()->is('admin/statuses') || request()->is('admin/statuses/*') ? 'active' : '' }}">
@@ -96,14 +111,24 @@
                 </li>
             @endcan */ ?>
             @can('lead_access')
-                <li class="nav-item">
-                    <a href="{{ route("admin.leads.index") }}" class="nav-link {{ request()->is('admin/leads') || request()->is('admin/leads/*') ? 'active' : '' }}">
-                        <i class="fa-fw fas fa-question-circle nav-icon">
+            <li class="nav-item">
+                <a href="{{ route("admin.leads.index") }}" class="nav-link {{ request()->is('admin/leads') || request()->is('admin/leads/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-question-circle nav-icon">
 
-                        </i>
-                        {{ trans('cruds.lead.title') }}
-                    </a>
-                </li>
+                    </i>
+                    {{ trans('cruds.lead.title') }}
+                </a>
+            </li>
+            @endcan
+            @can('dealer_access')
+            <li class="nav-item">
+                <a href="{{ route("admin.dealers.index") }}" class="nav-link {{ request()->is('admin/dealers') || request()->is('admin/dealers/*') ? 'active' : '' }}">
+                    <i class="fa-fw fas fa-question-circle nav-icon">
+
+                    </i>
+                    Dealers
+                </a>
+            </li>
             @endcan
             <?php /* @can('comment_access')
                 <li class="nav-item">
@@ -114,7 +139,7 @@
                         {{ trans('cruds.comment.title') }}
                     </a>
                 </li>
-            @endcan */?>
+            @endcan */ ?>
 
             <li class="nav-item">
                 <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
