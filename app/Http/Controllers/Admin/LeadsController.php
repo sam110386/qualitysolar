@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyLeadRequest;
 use App\Http\Requests\StoreLeadRequest;
 use App\Http\Requests\UpdateLeadRequest;
-use App\Priority;
-use App\Status;
-use App\Lead;
-use App\User;
+use App\Models\Priority;
+use App\Models\Status;
+use App\Models\Lead;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +50,7 @@ class LeadsController extends Controller
             $table->editColumn('id', function ($row) {
                 return $row->id ? $row->id : "";
             });
-            
+
             $table->addColumn('status_name', function ($row) {
                 return $row->status ? $row->status->name : '';
             });
@@ -59,10 +59,10 @@ class LeadsController extends Controller
             });
 
             //$table->addColumn('priority_name', function ($row) {
-               // return $row->priority ? $row->priority->name : '';
+            // return $row->priority ? $row->priority->name : '';
             //});
             //$table->addColumn('priority_color', function ($row) {
-              //  return $row->priority ? $row->priority->color : '#000000';
+            //  return $row->priority ? $row->priority->color : '#000000';
             //});
 
             $table->addColumn('category_name', function ($row) {
@@ -73,9 +73,9 @@ class LeadsController extends Controller
             });
 
             $table->editColumn('name', function ($row) {
-                return $row->fname ? $row->fname.' '.$row->lname : "";
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
             });
-            
+
             $table->addColumn('assigned_to_user_name', function ($row) {
                 return $row->assigned_to_user ? $row->assigned_to_user->name : '';
             });
@@ -107,9 +107,9 @@ class LeadsController extends Controller
 
         $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assigned_to_users = User::whereHas('roles', function($query) {
-                $query->whereId(2);
-            })
+        $assigned_to_users = User::whereHas('roles', function ($query) {
+            $query->whereId(2);
+        })
             ->pluck('name', 'id')
             ->prepend(trans('global.pleaseSelect'), '');
 
@@ -117,9 +117,9 @@ class LeadsController extends Controller
     }
 
     public function store(StoreLeadRequest $request)
-    {    
-        $dataToSave= $request->all();
-        $dataToSave['questions']=json_encode($dataToSave['questions']);
+    {
+        $dataToSave = $request->all();
+        $dataToSave['questions'] = json_encode($dataToSave['questions']);
         $lead = Lead::create($dataToSave);
         foreach ($request->input('attachments', []) as $file) {
             $lead->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
@@ -138,9 +138,9 @@ class LeadsController extends Controller
 
         $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $assigned_to_users = User::whereHas('roles', function($query) {
-                $query->whereId(2);
-            })
+        $assigned_to_users = User::whereHas('roles', function ($query) {
+            $query->whereId(2);
+        })
             ->pluck('name', 'id')
             ->prepend(trans('global.pleaseSelect'), '');
 

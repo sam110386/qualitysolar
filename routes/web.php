@@ -1,16 +1,56 @@
 <?php
-Route::get('/', 'LeadController@create');
-Route::get('/home', function () {
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
+Route::get('/', 'HomeController@index');
+Route::get('/compare', 'HomeController@compare');
+Route::get('/save-tax', 'HomeController@tax');
+Route::get('/about-us', 'HomeController@about');
+Route::get('/privacy-policy', 'HomeController@privacypolicy')->name('privacy-policy');
+Route::get('/terms-of-use', 'HomeController@termsofuse')->name('terms-of-use');
+Route::get('/glossary', 'HomeController@glossary');
+Route::get('/career', 'HomeController@career');
+Route::get('/quote', 'QuoteController@index')->name('quote');
+Route::match(['get', 'post'], '/quotestart', 'QuoteController@quotestart')->name('quotestart');
+Route::post('/residential', 'QuoteController@residential')->name('residential');
+Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
+Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
+
+/*Route::get('/home', function () {
     $route = Gate::denies('dashboard_access') ? 'admin.leads.index' : 'admin.home';
     if (session('status')) {
         return redirect()->route($route)->with('status', session('status'));
     }
 
     return redirect()->route($route);
-});
+});*/
 
-Auth::routes(['register' => false]);
+Auth::routes(['register' => true]);
+Route::get('/email/verify', function () {
+    return view('auth.verify');
+})->middleware('auth')->name('verification.notice');
 
+
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+    return redirect()->route('dealer.completeprofile');
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('message', 'Verification link sent!');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+Route::group(
+    ['prefix' => 'dealer', 'as' => 'dealer.', 'namespace' => 'Dealer', 'middleware' => ['auth', 'verified']],
+    function () {
+        Route::get('completeprofile', 'HomeController@completeprofile')->name('completeprofile');
+        Route::get('completeprofilesave', 'HomeController@completeprofilesave')->name('completeprofile_save');
+    }
+);
 Route::post('leads/media', 'LeadController@storeMedia')->name('leads.storeMedia');
 Route::post('leads/comment/{lead}', 'LeadController@storeComment')->name('leads.storeComment');
 Route::resource('leads', 'LeadController')->only(['show', 'create', 'store']);

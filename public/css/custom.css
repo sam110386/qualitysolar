@@ -1,108 +1,1296 @@
-.ck-editor__editable,
-textarea {
+html,
+body {
+    overflow-x: hidden;
+    font-family: "Montserrat", sans-serif;
+    background: #fff;
+}
+body button.focus,
+.btn:focus {
+    outline: none !important;
+    outline-offset: 0 !important;
+}
+ul,
+ol,
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none !important;
+    display: inline-block;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #000;
+}
+img {
+    max-width: 100%;
+}
+::placeholder {
+    color: #ccc !important;
+}
+.has-error select,
+.has-error input {
+    border: 1px solid red;
+}
+.has-error.custm_radio .custom-control-label,
+.has-error.col .custom-control-label,
+.has-error.col .form-check-label {
+    border: 1px solid red;
+}
+/* Header css start here ===== */
+.header {
+    transition: ease-in-out 0.3s;
+    position: sticky;
+    top: -1px;
+    z-index: 999;
+}
+.header .navbar {
+    padding: 15px 40px;
+    background: #fff !important;
+}
+.header .navbar-brand {
+    padding: 0;
+    margin-right: 0;
+    max-width: 150px;
+}
+.header .navbar-nav > li {
+    padding: 0 15px;
+}
+.header .navbar-nav > li:first-child {
+    padding-left: 0;
+}
+.header .navbar-nav > li:not(:last-child) {
+    border-right: 2px solid;
+}
+.header .navbar-nav li a {
+    font-size: 14px;
+    color: #000 !important;
+    padding: 0 !important;
+    transition: ease-in-out 0.3s;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 12px;
+}
+.header .btn,
+.link.btn {
+    line-height: 28px;
+}
+/* Header css end here ===== */
+
+/* Banner-section css start here ===== */
+.banner_sec {
+    padding: 100px 0 300px;
+    background: url(../img/home_banner_sec.svg) no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%;
+}
+.head_h1 {
+    margin: 0 auto 50px;
+    font-size: 38px;
+    max-width: 380px;
+}
+
+/* Banner-section css end here ===== */
+
+/* Our-Campare-section css start here ===== */
+.banner_sec.pricing-bnr {
+    background: url(../img/compare-banner.svg) no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+}
+.banner_sec.tax_banner {
+    background: url(../img/tax_banner.svg) no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+}
+.banner_sec.dictionary-bnr {
+    background: url(../img/dictionary_bnr.svg) no-repeat;
+    background-position: center bottom;
+    background-size: 100% 65%;
+}
+.banner_sec.career-bnr {
+    background: url(../img/career_bnr.svg) no-repeat;
+    background-position: center bottom;
+    background-size: 100% 65%;
+}
+.banner_sec.career-2-bnr {
+    background: url(../img/career_2_bnr.svg) no-repeat;
+    background-position: center bottom;
+    min-height: 732px;
+    margin-bottom: 50px;
+}
+
+.campare_sec {
+    padding: 30px 0;
+    background: #f8f8f8;
+    margin: 20px 0 0 0;
+}
+.our_cmpre a:not(:last-child) {
+    margin-right: 45px;
+}
+.campare_sec .black_text {
+    max-width: 390px;
+    margin: 0 auto;
+}
+.cmpare_car_img {
+    margin: 40px 0;
+}
+.our_cmpre {
+    margin-bottom: 40px;
+}
+.pull-show {
+    font-size: 14px;
+}
+.glossary .pricing-box {
+    min-height: 250px;
+}
+.career .dflex {
     min-height: 150px;
 }
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+/* Our-Campare-section css end here ===== */
 
-.datatable {
-    width: 100% !important;
+/* Our-Chargers-section css start here ===== */
+.chargers_sec {
+    padding: 70px 0px 50px 0px;
+}
+.chargers_sec .moreText {
+    font-size: 22px;
+    letter-spacing: 1px;
+    margin: 50px 0 30px 0;
+}
+.our_chrgrs {
+    flex-wrap: wrap;
+}
+.our_chrgrs a {
+    width: 20%;
+    margin-top: 40px;
+}
+/* Our-Chargers-section css end here ===== */
+
+/* Testimonial-section css start here ===== */
+.testimonial_sec {
+    margin: 0 0 30px 0;
+}
+.testimonial_sec .grayBg {
+    background: #f8f8f8;
+    padding: 30px 0px 110px 0px;
+}
+.testimonial_sec .black_text {
+    max-width: 320px;
+    margin: 0 auto;
+}
+.ratting_star {
+    margin: 30px 0;
+}
+.ratting_star i {
+    font-size: 70px;
+    color: #efc523;
+    padding: 0 10px;
+}
+.tstimonial_box {
+    background: #fff;
+    border-radius: 15px;
+    margin-top: -90px;
+    padding: 15px 20px 20px 20px;
+    box-shadow: 1px 8px 12px #e1e1e1;
+    min-height: 185px;
+}
+.tstimonial_box span {
+    font-size: 15px;
+}
+.small_rting_star i {
+    color: #efc523;
+    font-size: 14px;
+}
+.tstimonial_box p {
+    font-size: 15px;
+    margin: 0;
+}
+.whiteBg {
+    background: #fff;
+}
+/* Testimonial-section css end here ===== */
+
+/* certified-section css start here ===== */
+.certified_sec {
+    margin: 150px 0;
+}
+.img-100 img {
+    width: 100%;
+}
+/* certified-section css end here ===== */
+
+/* some-nbr-section css start here ===== */
+.some_nbr_sec {
+    margin-bottom: 70px;
+}
+.some_nbr_img {
+    margin: 10px 0 0 0;
 }
 
-.dataTables_length,
-.dataTables_filter,
-.dt-buttons {
-    margin-bottom: 0.333em;
-    margin-top: .2rem;
+.count_holder {
+    margin: 0 150px;
 }
-
-.dataTables_filter {
-    margin-right: .2rem;
+.count_txt {
+    width: 33.33333%;
+    position: relative;
+    padding: 60px 0 0 0;
 }
-
-.dt-buttons .btn {
-    margin-left: 0.333em;
-    border-radius: 0;
+.count_txt::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background: #000;
+    height: 55px;
+    width: 2px;
+    display: inline-block;
 }
-
-.table.datatable {
-    box-sizing: border-box;
-    border-collapse: collapse;
+.count_txt h3::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 49.8%;
+    background: #000;
+    height: 4px;
+    width: 4px;
+    display: inline-block;
+    border-radius: 50%;
 }
-
-table.dataTable thead th {
-    border-bottom: 2px solid #c8ced3;
+.count_txt h3 {
+    margin: 0;
+    position: relative;
+    padding: 5px 0 0 0;
 }
-
-.dataTables_wrapper.no-footer .dataTables_scrollBody {
-    border-bottom: 1px solid #c8ced3;
-}
-
-.select2 {
-    max-width: 100%;
-    width: 100% !important;
-}
-
-.select2-selection__rendered {
-    padding-bottom: 5px !important;
-}
-
-.has-error .invalid-feedback {
-    display: block !important;
-}
-
-.btn-info,
-.badge-info {
-    color: white;
-}
-
-table.dataTable thead .sorting,
-table.dataTable thead .sorting_asc,
-table.dataTable thead .sorting_desc {
-    background-image: none;
-}
-
-.sidebar .nav-item {
-    cursor: pointer;
-}
-
-.btn-default {
-    color: #23282c;
-    background-color: #f0f3f5;
-    border-color: #f0f3f5;
-}
-
-.btn-default.focus,
-.btn-default:focus {
-    box-shadow: 0 0 0 .2rem rgba(209, 213, 215, .5);
-}
-
-.btn-default:hover {
-    color: #23282c;
-    background-color: #d9e1e6;
-    border-color: #d1dbe1;
-}
-
-.btn-group-xs > .btn,
-.btn-xs {
-    padding: 1px 5px;
+.count_txt span {
     font-size: 12px;
-    line-height: 1.5;
-    border-radius: 3px;
+    display: block;
+    margin-top: -5px;
+}
+.btn.black_btn {
+    color: #efc523;
+    background: #000;
+}
+/* some-nbr-section css end here ===== */
+
+/* electricians-section css start here ===== */
+.electricians_sec {
+    margin: 150px 0 120px 0;
+}
+.electricians_sec p {
+    font-size: 35px;
+    margin: 60px 0 30px 0;
+    line-height: 45px;
+}
+/* electricians-section css end here ===== */
+
+/* Footer-section css start here ===== */
+.footer_sec {
+    padding: 30px 0;
+    background: #000;
+}
+.footer_sec .head_h6 {
+    font-size: 16px;
+    margin: 0 0 10px;
+    color: #efc523;
+}
+.footer_menu li {
+    padding-bottom: 10px;
+}
+.footer_sec a {
+    color: #fff;
+    font-size: 16px;
+}
+.social_box {
+    width: 287px;
+    margin: 30px auto auto auto;
+}
+.social_box a {
+    color: #7d7d7d;
+    margin-right: 30px;
+    font-size: 20px;
+}
+.social_box h6 {
+    color: #7d7d7d;
+    font-size: 12px;
+}
+.social_box a img {
+    width: 20px;
+}
+/* Footer-section css end here ===== */
+
+/* pricing page css start here ===== */
+.smplTxt {
+    margin: 50px 0;
+}
+.pricing-bnr .head_h1 {
+    max-width: 680px;
+    padding-bottom: 130px;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+.tax_banner .head_h1 {
+    max-width: 680px;
+    padding-bottom: 160px;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+.about-bnr .head_h1 {
+    max-width: 100%;
+    padding-bottom: 160px;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+.dictionary-bnr .head_h1 {
+    max-width: 100%;
+    padding-bottom: 160px;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+.career-bnr .head_h1 {
+    max-width: 100%;
+    padding-bottom: 160px;
+    text-transform: capitalize;
+    line-height: 50px;
+}
+.smplTxt p {
+    font-size: 35px;
+    margin: 0 160px;
+    line-height: 50px;
+    text-transform: capitalize;
+}
+.pricing-hdr {
+    background: #000;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+.pricing-hdr .heaing-txt {
+    color: #efc523;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 37px;
+    margin: 0;
+}
+.pricing-box {
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px 20px 20px 20px;
+    box-shadow: 1px 8px 12px #e1e1e1;
+}
+.pri-box-Txt {
+    margin-left: 20px;
+    text-align: center;
+}
+.pri-box-Txt h5 {
+    margin-bottom: 30px;
+}
+.pri-box-Txt span {
+    font-weight: 500;
+    display: block;
+    margin: -45px 0 0 18px;
+    font-size: 20px;
+}
+.multi-btn .icon_btn {
+    background: #000;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 6px 20px;
+    height: 40px;
+}
+.icon_btn img {
+    margin-right: 2px;
+}
+.multi-btn .icon_btn {
+    background: #000;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 4px 7px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+}
+.multi-btn .icon_btn:last-child {
+    margin-right: 0;
+}
+.multi-btn {
+    margin: 20px -10px 0 -10px;
+}
+/* pricing page css end here ===== */
+
+/* Register page css start here */
+.wizard {
+    max-width: 1280px;
+    margin: 0 auto 20px;
+}
+.wizard-inner {
+    position: relative;
+    padding: 15px 0;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 100px;
+}
+.wizard-inner img {
+    margin-bottom: -70px;
+}
+.head_box h2,
+.head_box p {
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    line-height: normal;
+    margin: 0 auto;
+    max-width: 700px;
+}
+.head_box p {
+    font-size: 28px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+.head_box .logo_step {
+    max-width: 150px !important;
+    vertical-align: 0px;
+}
+.wizard .nav-tabs {
+    display: none;
+}
+.wizard .tab-pane {
+    position: relative;
+}
+.reg_rightBox .list-inline {
+    margin: 100px 0 0;
+}
+.wizard .list-inline {
+    text-align: center;
+}
+.radio_box {
+    max-width: 310px;
+    margin: 30px auto 0;
+}
+.custm_radio {
+    padding: 0;
+    margin: 0 0 25px;
+}
+.custm_radio .custom-control-label {
+    background: #f2f2f2;
+    padding: 15px 20px 15px 60px;
+    border-radius: 10px;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #000;
+}
+.custm_radio .custom-control-label::before {
+    top: 12px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    border: #dfe2e5 solid 1px;
+}
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #efc523;
+    background-color: #efc523;
+}
+.custm_radio .custom-control-label::after {
+    background: none !important;
+}
+.next-step,
+.prev-step,
+.btn {
+    min-width: 130px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+    background: #efc523;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 14px;
+}
+.btn-primary:hover,
+.btn:hover {
+    color: #000;
+    background: #efc523;
+    border-color: #efc523;
+}
+.brand_modal {
+    max-width: 450px;
+    margin: 55px auto;
+}
+.form-control {
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    height: 45px;
+}
+#commercial_form .form-control,
+#residentialform .form-control {
+    text-transform: uppercase;
+}
+.charger_box {
+    max-width: 785px;
+    margin: 20px auto;
+}
+.charger_box .custm_radio {
+    max-width: 310px;
+    margin: 20px auto 25px;
+}
+.ev_box {
+    margin-bottom: 50px;
+}
+.form-row {
+    margin: 0 0 10px;
+}
+.by_click {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 30px;
+    color: #000;
+}
+.install_box {
+    max-width: 815px;
+    margin: 20px auto;
+}
+.install_img {
+    margin-top: 20px;
+}
+.font_12 {
+    font-size: 12px !important;
+}
+.home_box {
+    max-width: 700px;
+    margin: 0 auto;
+}
+.home_img {
+    max-width: 134px;
+}
+.home_img2 {
+    max-width: 170px;
+}
+.home_img3 {
+    max-width: 138px;
+}
+.home_img4 {
+    max-width: 97px;
+}
+.own_head {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 30px 0 20px;
+}
+.own_radio .custm_radio .custom-control-label {
+    padding: 10px 20px 10px 60px;
+    font-size: 14px;
+}
+.own_radio .custm_radio .custom-control-label::before {
+    top: 10px;
+    width: 21px;
+    height: 21px;
+}
+.own_radio .custm_radio .custom-control-label::after {
+    top: 10px;
+    left: 16px;
+}
+.head_box p.font_12 {
+    margin-top: 5px;
+}
+.mw_100 {
+    max-width: 100% !important;
+}
+.car_img {
+    margin: 50px 0 40px;
+}
+.ft_box {
+    max-width: 550px;
+    margin: -10px auto 50px;
+}
+.ft_box label {
+    width: 50px;
+    text-align: center;
+    padding: 2px 0;
+    border: 1px solid #ccc;
+    border-radius: 100%;
+    color: #ccc;
+    font-size: 13px;
+    font-weight: 600;
+}
+.ft_box input:checked ~ label {
+    background: #efc523;
+    border-color: #efc523;
+    color: #000;
+}
+.power_head h2 {
+    max-width: 900px;
+    margin: 130px auto 70px;
+}
+.item_box {
+    max-width: 700px;
+    margin: 30px auto 0;
+}
+.item_box2 {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.item_box > div:not(:last-child),
+.item_box2 > div:not(:last-child) {
+    margin-right: 22px;
+}
+.item_box > div,
+.item_box2 > div {
+    margin-bottom: 30px;
+}
+.quote_img {
+    margin: 20px 0;
+}
+.lbl_head h2 {
+    max-width: 750px;
+    margin: 0 auto 15px;
+}
+.lbl_box {
+    margin-top: 30px;
+}
+.lbl_box label {
+    display: block;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+.inline_form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+.inline_form label {
+    font-size: 12px;
+    margin: 0;
+}
+.head_box .note_txt {
+    font-size: 15px;
+    margin: 20px 0;
+    font-weight: 500;
+}
+.head_box img {
+    max-width: 18px;
+    vertical-align: -3px;
+}
+.thnku_box {
+    margin: 0 0 30px;
+}
+.thnku_txt {
+    font-size: 22px;
+}
+.charger_box input:checked ~ .form-check-label,
+.check_boxs input:checked ~ .form-check-label {
+    border: 1px solid #efc523;
+}
+.check_boxs .form-check-label {
+    padding: 4px;
+}
+.owner_ship > .d-flex {
+    max-width: 600px;
+    margin: 90px auto 40px;
+}
+.commercial_bx .item_box {
+    max-width: 800px;
+    margin: 30px auto;
+}
+/* Register page css end here */
+
+.price_tble table td {
+    border: none;
+    font-size: 13px;
+    padding: 8px 10px;
+}
+.price_tble {
+    padding: 0 10px;
+    margin-top: 10px;
+    display: none;
+}
+.price_tble tr td:first-child {
+    font-weight: 500;
+}
+.see_more {
+    color: #000;
+    background: #efc523;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+    border-radius: 0 0 15px 15px;
+    font-weight: 500;
+    padding: 7px 5px;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.show_table {
+    display: block;
 }
 
-.searchable-title {
-    font-weight: bold;
+.padd_b60 {
+    padding-bottom: 60px;
 }
-.searchable-fields {
-    padding-left:5px;
+.other_service {
+    background: #f8f8f8;
+    padding: 60px 0px;
 }
-.searchable-link {
-    padding:0 5px 0 5px;
+.pricing-sec .pricing-box .pri-box-img {
+    min-height: 185px;
 }
-.searchable-link:hover   {
-    cursor: pointer;
-    background: #eaeaea;
+.other_service .pricing-box .pri-box-img {
+    width: 71px;
 }
-.select2-results__option {
-    padding-left: 0px;
-    padding-right: 0px;
+
+.other_service .pri-box-Txt {
+    margin-left: 0px;
+}
+.other_service .pri-box-Txt h5 {
+    font-size: 15px;
+    margin-bottom: 3px;
+    line-height: 15px;
+    color: #212529;
+}
+.other_service .pri-box-Txt img {
+    max-width: 92px;
+}
+.other_service .pri-box-Txt span {
+    font-size: 15px;
+    margin: -34px 0 0 15px;
+}
+.other_service .pricing-box {
+    max-width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 1px 4px 6px #e1e1e1;
+    height: 92px;
+    display: flex;
+    align-items: center;
+}
+
+/* tax page css start here ===== */
+
+.faq-sec {
+    margin-bottom: 60px;
+}
+#taxAccording .card-header h5:after {
+    content: "\2212";
+    font-size: 32px;
+    position: absolute;
+    right: 15px;
+    top: 3px;
+}
+#taxAccording .card-header h5.collapsed:after {
+    content: "\002B";
+}
+#taxAccording .card {
+    box-shadow: 0 0 5px #ccc;
+    margin-bottom: 10px;
+    border: 0;
+}
+
+#taxAccording .card .card-header {
+    border: 0;
+    padding: 15px 20px;
+}
+.faq-txt h6 {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+}
+.faq-txt span {
+    font-weight: 500;
+    font-size: 14px;
+    color: #efc523;
+    font-weight: 500;
+}
+.faq-txt p {
+    font-size: 14px;
+    margin: 15px 0 0 0;
+}
+.faq-img {
+    margin-right: 20px;
+    width: 190px;
+    padding: 0 10px;
+}
+#taxAccording .card-body .d-flex {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 13px #ccc;
+    padding: 20px;
+}
+#taxAccording .card-header h5 {
+    font-size: 14px;
+    font-weight: 600;
+}
+#taxAccording .card-body {
+    padding: 1.5rem 2.25rem;
+}
+
+/* tax page css end here ===== */
+
+/* about page css start here ===== */
+
+.about-bnr {
+    background: url(../img/about-bg.png) no-repeat;
+    background-size: 100%;
+    height: 625px;
+    margin-top: 75px;
+    margin-bottom: 75px;
+    background-position: center bottom;
+    padding: 0px 0 300px;
+}
+.about-sec {
+    /*margin: 50px 0 0 0;*/
+    background: #f2f2f2;
+    padding-top: 60px;
+}
+.aboutTxt {
+    padding-left: 40px;
+}
+.aboutTxt .head_h1 {
+    max-width: initial;
+    margin-bottom: 30px;
+}
+.aboutTxt p,
+.workTxt p {
+    font-size: 30px;
+    line-height: 43px;
+    margin: 0;
+}
+.about-sec .row {
+    align-items: center;
+}
+.workforce_sec {
+    background: url(../img/about3.jpg) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: relative;
+    padding: 50px 0;
+}
+.workforce_sec:before {
+    content: "";
+    position: absolute;
+    background: #000000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0.5;
+}
+.workTxt .head_h2 {
+    margin-bottom: 30px;
+    color: #fff;
+}
+.workTxt p {
+    color: #fff;
+    font-weight: 300;
+}
+.workImg {
+    text-align: center;
+}
+a.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.workImg a.btn {
+    margin: 25px 0 0 0;
+    padding: 13px 35px;
+    height: auto;
+    font-weight: 400;
+    font-size: 20px;
+}
+.carbon_sec {
+    padding: 50px 0;
+}
+.carbon_sec p {
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 15px 0;
+}
+.fleet_sec {
+    background: url(../img/about6.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 150px 0;
+}
+.career_fleet_sec {
+    background: url(../img/career_5.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 150px 0;
+}
+.meet_sec {
+    margin: 40px 0 60px 0;
+}
+.aboutHeading {
+    font-size: 38px;
+}
+.meet_sec .aboutHeading {
+    margin: 0 !important;
+}
+.meetName {
+    margin: 30px 0 20px 0;
+}
+.meet-box {
+    margin-top: -325px;
+}
+.meet-box a {
+    background: #000;
+    color: #fff;
+    width: 51px;
+    height: 51px;
+    color: #fff;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.meet-box a i {
+    font-size: 30px;
+}
+.meetName span.btn {
+    height: auto;
+    padding: 10px 0;
+    font-size: 20px;
+    line-height: 22px;
+    width: 343px;
+    cursor: auto;
+}
+.education_sec {
+    background: url(../img/about10.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 150px 0;
+}
+
+.partner_sec {
+    background: url(../img/about11.png) no-repeat;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 150px 0;
+    /*margin: 60px 0 40px 0;*/
+}
+.partner_sec a.btn {
+    font-size: 20px;
+    padding: 13px 25px;
+    height: auto;
+    font-weight: 400;
+}
+/* about page css end here ===== */
+
+@media (max-width: 1024px) {
+    .tstimonial_box {
+        min-height: 225px;
+    }
+    .header .navbar-toggler {
+        background: #efc523;
+    }
+    .icon_btn span {
+        font-size: 12px;
+        line-height: 13px;
+    }
+
+    .faq-img {
+        min-width: 110px !important;
+        width: 110px !important;
+    }
+    .workforce_sec,
+    .partner_sec {
+        background-size: cover;
+    }
+    .education_sec,
+    .partner_sec,
+    .fleet_sec {
+        padding: 70px 0;
+    }
+    .about-bnr {
+        height: auto;
+    }
+}
+@media (max-width: 991px) {
+    .header .navbar-toggler {
+        background: #efc523;
+    }
+    .header .navbar-nav > li {
+        padding: 0 0 15px 0;
+        border: 0 !important;
+    }
+    .header .navbar-collapse {
+        margin: 15px -15px 0 -15px;
+        background: #f5f5f5;
+        padding: 15px;
+    }
+    .header .navbar {
+        padding: 15px;
+    }
+    .count_holder {
+        margin: 0;
+    }
+    .tstimonial_box {
+        min-height: 300px;
+    }
+
+    .pricing-bnr .head_h1,
+    .tax_banner .head_h1,
+    .about-bnr .head_h1 {
+        padding-bottom: 30px;
+    }
+    .smplTxt p {
+        margin: 0;
+    }
+    .pricing-box {
+        margin-bottom: 30px;
+    }
+    .other_service .col-lg-4 {
+        text-align: center;
+    }
+    .other_service .pricing-box {
+        margin: 0 auto;
+    }
+    .other_service h2.heaing-txt {
+        text-align: center;
+    }
+    .other_service .col-lg-4 img {
+        margin: 20px 0 !important;
+    }
+    #taxAccording .card-body {
+        padding: 15px;
+    }
+    .aboutHeading {
+        font-size: 30px;
+    }
+    .aboutTxt p,
+    .workTxt p {
+        font-size: 20px;
+        line-height: 30px;
+    }
+    .carbon_sec p {
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .meetName span.btn {
+        width: 300px;
+    }
+    .meet_sec .aboutHeading {
+        margin-bottom: 30px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .header .navbar-collapse ul.navbar-nav:last-child {
+        min-width: 308px;
+    }
+}
+@media (max-width: 768px) {
+    .banner_sec {
+        padding: 35px 0 280px;
+    }
+    .head_h1 {
+        margin: 0 auto 20px;
+    }
+    .certified_sec {
+        margin: 80px 0;
+    }
+    .electricians_sec {
+        margin: 90px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .banner_sec {
+        padding: 35px 0 150px;
+    }
+    .head_h1,
+    .head_h2,
+    .heaing-txt {
+        font-size: 26px;
+    }
+    .cmpare_car_img {
+        margin: 5px 0 20px 0;
+    }
+    .our_cmpre {
+        margin-bottom: 20px;
+    }
+    .our_cmpre a:not(:last-child) {
+        margin-right: 10px;
+    }
+    .our_chrgrs a {
+        width: 50%;
+        margin-top: 20px;
+    }
+    .ratting_star i {
+        font-size: 34px;
+        padding: 0 4px;
+    }
+    .testimonial_sec .grayBg {
+        padding: 30px 0px 0px 0px;
+    }
+    .testimonial_sec .whiteBg {
+        background: #f8f8f8;
+        padding-top: 30px;
+    }
+    .ratting_star {
+        margin: 15px 0 0 0;
+    }
+    .tstimonial_box {
+        min-height: 0;
+        margin: 0 0 20px 0;
+    }
+    .testimonial_sec .text-center.mt-5 {
+        margin: 0 !important;
+        padding-bottom: 30px;
+    }
+    .testimonial_sec .black_text {
+        margin-bottom: 0 !important;
+    }
+    .whiteBg .text-center.mt-3 {
+        margin: 20px 0 !important;
+    }
+    .next-step,
+    .btn {
+        width: 100%;
+    }
+    .certified_sec {
+        margin: 50px 0;
+    }
+    .chargers_sec {
+        padding: 50px 0px;
+    }
+    .electricians_sec p {
+        font-size: 24px;
+        margin: 25px 0;
+        line-height: 30px;
+    }
+    .electricians_sec {
+        margin: 50px 0;
+    }
+    .footer_sec {
+        text-align: center;
+    }
+    .social_box a:last-child {
+        margin: 0;
+    }
+    .footer_menu ul.list-unstyled {
+        margin-bottom: 15px;
+    }
+    .pricing-bnr .head_h1,
+    .tax_banner .head_h1,
+    .about-bnr .head_h1 {
+        line-height: 30px;
+    }
+    .pricing-bnr .head_h1,
+    .tax_banner .head_h1 {
+        padding-bottom: 0;
+        margin: 0;
+    }
+    .smplTxt p {
+        font-size: 24px;
+        line-height: 30px;
+    }
+    .pricing-hdr .heaing-txt {
+        font-size: 22px;
+        margin: 0 10px;
+    }
+    .other_service .pricing-box {
+        max-width: 100%;
+        margin-bottom: 30px !important;
+    }
+    .other_service {
+        padding: 30px 0px;
+    }
+    .other_service h2.heaing-txt {
+        margin-bottom: 30px !important;
+    }
+    .padd_b60 {
+        padding-bottom: 20px;
+    }
+    .pri-box-Txt h5 {
+        margin-bottom: 20px;
+    }
+    .icon_btn img {
+        max-width: 40px;
+    }
+    #taxAccording .card-body > .d-flex {
+        padding: 15px;
+    }
+    .aboutTxt {
+        padding-left: 0;
+        margin: 40px 0 20px 0;
+    }
+    .aboutTxt .head_h1,
+    .workTxt .head_h2 {
+        margin-bottom: 15px;
+    }
+    .workImg {
+        margin-top: 30px;
+    }
+    .workTxt,
+    .aboutTxt {
+        text-align: center;
+    }
+    .meet-box {
+        margin-top: 0;
+    }
+    .meet-box {
+        margin-bottom: 40px;
+    }
+    .meet_sec {
+        margin: 40px 0 10px 0;
+    }
+    .education_sec,
+    .partner_sec,
+    .fleet_sec {
+        padding: 50px 0;
+        background-size: cover;
+    }
+    .partner_sec {
+        /* margin: 40px 0 40px 0;*/
+    }
+    .carbon_sec {
+        padding: 30px 0;
+    }
+    .about-sec {
+        /* margin: 20px 0 0 0;*/
+        padding-top: 30px;
+    }
+    .meet_sec .row .col-md-6:first-child .meet-box {
+        margin-top: -128px;
+    }
+    .meetName span.btn {
+        width: 100%;
+    }
+    .about-bnr {
+        background-size: 100%;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        height: 290px;
+    }
+    .white_text.headh1 {
+        font-size: 20px;
+        line-height: 30px;
+    }
+}
+@media (max-width: 575px) {
+    #taxAccording .card-body .d-flex {
+        display: block !important;
+    }
+    .faq-img {
+        text-align: center;
+        margin: 0 0 15px 0 !important;
+        width: 100%;
+    }
+    .workImg a.btn {
+        font-size: 18px;
+    }
 }

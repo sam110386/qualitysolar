@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\User;
+use App\Models\User;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +25,10 @@ class UpdateUserRequest extends FormRequest
             'email'   => [
                 'required',
                 'unique:users,email,' . request()->route('user')->id,
+            ],
+            'phone'   => [
+                'required',
+                'unique:users,' . request()->route('user')->id,
             ],
             'roles.*' => [
                 'integer',

@@ -4,7 +4,7 @@ namespace App\Observers;
 
 use App\Notifications\DataChangeEmailNotification;
 use App\Notifications\AssignedLeadNotification;
-use App\Lead;
+use App\Models\Lead;
 use Illuminate\Support\Facades\Notification;
 
 class LeadActionObserver
@@ -12,7 +12,7 @@ class LeadActionObserver
     public function created(Lead $model)
     {
         $data  = ['action' => 'New lead has been created!', 'model_name' => 'Lead', 'lead' => $model];
-        $users = \App\User::whereHas('roles', function ($q) {
+        $users = \App\Models\User::whereHas('roles', function ($q) {
             return $q->where('title', 'Admin');
         })->get();
         Notification::send($users, new DataChangeEmailNotification($data));
@@ -20,11 +20,9 @@ class LeadActionObserver
 
     public function updated(Lead $model)
     {
-        if($model->isDirty('assigned_to_user_id'))
-        {
+        if ($model->isDirty('assigned_to_user_id')) {
             $user = $model->assigned_to_user;
-            if($user)
-            {
+            if ($user) {
                 Notification::send($user, new AssignedLeadNotification($model));
             }
         }

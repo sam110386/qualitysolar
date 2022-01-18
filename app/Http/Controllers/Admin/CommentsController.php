@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Comment;
+use App\Models\Comment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyCommentRequest;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
-use App\Lead;
-use App\User;
+use App\Models\Lead;
+use App\Models\User;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;

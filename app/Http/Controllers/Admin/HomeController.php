@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Gate;
 use Symfony\Component\HttpFoundation\Response;
-use App\Lead;
+use App\Models\Lead;
 
 class HomeController
 {
@@ -13,10 +13,10 @@ class HomeController
         abort_if(Gate::denies('dashboard_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $totalLeads = Lead::count();
-        $openLeads = Lead::whereHas('status', function($query) {
+        $openLeads = Lead::whereHas('status', function ($query) {
             $query->whereName('Open');
         })->count();
-        $closedLeads = Lead::whereHas('status', function($query) {
+        $closedLeads = Lead::whereHas('status', function ($query) {
             $query->whereName('Closed');
         })->count();
 

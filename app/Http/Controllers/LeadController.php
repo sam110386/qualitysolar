@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Lead;
+use App\Models\Lead;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Notifications\CommentEmailNotification;
 use Illuminate\Support\Facades\Notification;
@@ -43,13 +43,13 @@ class LeadController extends Controller
             'priority_id'   => 1
         ]);
 
-        $ticket = Ticket::create($request->all());
+        $ticket = Lead::create($request->all());
 
         foreach ($request->input('attachments', []) as $file) {
             $ticket->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
         }
 
-        return redirect()->back()->withStatus('Your ticket has been submitted, we will be in touch. You can view ticket status <a href="'.route('tickets.show', $ticket->id).'">here</a>');
+        return redirect()->back()->withStatus('Your ticket has been submitted, we will be in touch. You can view ticket status <a href="' . route('tickets.show', $ticket->id) . '">here</a>');
     }
 
     /**
@@ -71,9 +71,9 @@ class LeadController extends Controller
             'comment_text' => 'required'
         ]);
 
-        $comment = $ticket->comments()->create([
-            'author_name'   => $ticket->author_name,
-            'author_email'  => $ticket->author_email,
+        $comment = $lead->comments()->create([
+            'author_name'   => $lead->author_name,
+            'author_email'  => $lead->author_email,
             'comment_text'  => $request->comment_text
         ]);
 

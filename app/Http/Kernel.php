@@ -42,5 +42,7 @@ class Kernel extends HttpKernel
         'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'verified'         => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'approved'         => \App\Http\Middleware\IsApproved::class,
     ];
 }

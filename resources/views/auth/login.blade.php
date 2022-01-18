@@ -1,4 +1,4 @@
-@extends('layouts.auth')
+@extends('layouts.dealer')
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-6">
@@ -9,9 +9,9 @@
                 <p class="text-muted">{{ trans('global.login') }}</p>
 
                 @if(session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
                 @endif
 
                 <form method="POST" action="{{ route('login') }}">
@@ -27,9 +27,9 @@
                         <input id="email" name="email" type="text" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" required autocomplete="email" autofocus placeholder="{{ trans('global.login_email') }}" value="{{ old('email', null) }}">
 
                         @if($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('email') }}
+                        </div>
                         @endif
                     </div>
 
@@ -41,9 +41,9 @@
                         <input id="password" name="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" required placeholder="{{ trans('global.login_password') }}">
 
                         @if($errors->has('password'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('password') }}
-                            </div>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('password') }}
+                        </div>
                         @endif
                     </div>
 
@@ -64,9 +64,9 @@
                         </div>
                         <div class="col-6 text-right">
                             @if(Route::has('password.request'))
-                                <a class="btn btn-link px-0" href="{{ route('password.request') }}">
-                                    {{ trans('global.forgot_password') }}
-                                </a><br>
+                            <a class="btn btn-link " href="{{ route('password.request') }}">
+                                {{ trans('global.forgot_password') }}
+                            </a><br>
                             @endif
 
                         </div>
