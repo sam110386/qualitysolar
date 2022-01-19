@@ -27,6 +27,7 @@ Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 });*/
 
 Auth::routes(['register' => true]);
+
 Route::get('/email/verify', function () {
     return view('auth.verify');
 })->middleware('auth')->name('verification.notice');
@@ -44,18 +45,23 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+//Dealer end routes
 Route::group(
-    ['prefix' => 'dealer', 'as' => 'dealer.', 'namespace' => 'Dealer', 'middleware' => ['auth', 'verified']],
+    ['prefix' => 'dealer', 'as' => 'dealer.', 'namespace' => 'Dealer', 'middleware' => ['auth', 'verified'/*, 'approved'*/]],
     function () {
         Route::get('completeprofile', 'HomeController@completeprofile')->name('completeprofile');
-        Route::get('completeprofilesave', 'HomeController@completeprofilesave')->name('completeprofile_save');
+        Route::post('completeprofilesave', 'HomeController@completeprofilesave')->name('completeprofile_save');
+        Route::get('thank-you', 'HomeController@thankyou')->name('thank-you');
+        Route::get('home', 'HomeController@index')->name('home'); //->middleware('approved');
     }
 );
+/*
 Route::post('leads/media', 'LeadController@storeMedia')->name('leads.storeMedia');
 Route::post('leads/comment/{lead}', 'LeadController@storeComment')->name('leads.storeComment');
 Route::resource('leads', 'LeadController')->only(['show', 'create', 'store']);
-
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
+*/
+//Admin end routes
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth', 'adminauth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
@@ -67,6 +73,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Users
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
+    Route::get('users/status/{user}/{status}', 'UsersController@status')->name('users.status');
+    Route::get('users/verify/{user}/{status}', 'UsersController@verify')->name('users.verify');
+
     Route::resource('users', 'UsersController');
 
     // Statuses

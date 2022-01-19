@@ -18,7 +18,17 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
-            return redirect('/home');
+            $user = Auth::user();
+            if ($user->isAdmin()) {
+                return redirect()->route('admin.home');
+            }
+            if (!$user->userIsApproved()) {
+                return redirect()->route('dealer.completeprofile');
+            }
+            if (!$user->isAdmin() && $user->userIsApproved()) {
+                return redirect()->route('dealer.home');
+            }
+            return redirect('/');
         }
 
         return $next($request);

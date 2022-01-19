@@ -39,7 +39,19 @@ class User extends Authenticatable implements MustVerifyEmail
         'deleted_at',
         'remember_token',
         'email_verified_at',
-        'is_approved'
+        'is_approved',
+        'description',
+        'company_name',
+        'address',
+        'driver_license',
+        'electrician_license',
+        'vehicle_insurance',
+        'liability_insurance',
+        'master_agreement',
+        'evcharger_certification',
+        'w9_certification',
+        'ein',
+        'poc'
     ];
 
     public function tickets()

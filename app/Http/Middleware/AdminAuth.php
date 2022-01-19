@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsApproved
+class AdminAuth
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class IsApproved
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!$request->user()->userIsApproved()) {
-            return redirect()->route('dealer.completeprofile');
+        if (!$request->user()->isAdmin()) {
+            return redirect('/');
         }
         return $next($request);
     }

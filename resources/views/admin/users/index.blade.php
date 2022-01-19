@@ -60,20 +60,23 @@
                             {{ $user->phone ?? '' }}
                         </td>
                         <td>
-                            @if($user->email_verified_at)
-                            <span class="badge badge-success">Yes</span>
-                            @else
-                            <span class="badge badge-danger">No</span>
-                            @endif
+                            <a href="{{ route('admin.users.verify', [$user->id,($user->email_verified_at?1:0)]) }}" onclick="return confirm('Are you sure you want to change status for this account?')">
+
+                                @if($user->email_verified_at)
+                                <span class="badge badge-success">Yes</span>
+                                @else
+                                <span class="badge badge-danger">No</span>
+                                @endif
+                            </a>
                         </td>
                         <td>
-
-                            @if($user->is_approved)
-                            <span class="badge badge-success">Yes</span>
-                            @else
-                            <span class="badge badge-danger">No</span>
-                            @endif
-
+                            <a href="{{ route('admin.users.status', [$user->id,$user->is_approved]) }}" onclick="return confirm('Are you sure you want to change status for this account?')">
+                                @if($user->is_approved)
+                                <span class="badge badge-success">Yes</span>
+                                @else
+                                <span class="badge badge-danger">No</span>
+                                @endif
+                            </a>
                         </td>
                         <td>
                             @can('user_show')
@@ -87,6 +90,7 @@
                                 {{ trans('global.edit') }}
                             </a>
                             @endcan
+
 
                             @can('user_delete')
                             <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">

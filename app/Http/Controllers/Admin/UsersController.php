@@ -28,9 +28,6 @@ class UsersController extends Controller
     public function create()
     {
         abort_if(Gate::denies('user_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $roles = Role::all()->pluck('title', 'id');
-
         return view('admin.users.create', compact('roles'));
     }
 
@@ -45,28 +42,63 @@ class UsersController extends Controller
     public function edit(User $user)
     {
         abort_if(Gate::denies('user_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $roles = Role::all()->pluck('title', 'id');
-
-        $user->load('roles');
-
-        return view('admin.users.edit', compact('roles', 'user'));
+        return view('admin.users.edit', compact('user'));
     }
 
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request, $id)
     {
-        $user->update($request->all());
-        $user->roles()->sync($request->input('roles', []));
+        $userObj = User::FindOrFail($id);
+        $userObj->name = $request->name;
+        $userObj->email = $request->email;
+        $userObj->phone = $request->phone;
+        $userObj->description = trim($request->description);
+        $userObj->company_name = $request->company_name;
+        $userObj->address = $request->address;
+        $userObj->ein = $request->ein;
+        $userObj->poc = $request->poc;
 
+        if ($request->file('driver_license')) {
+            $fileName = time() . '_' . $request->file('driver_license')->getClientOriginalName();
+            $filePath = $request->file('driver_license')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->driver_license = time() . '_' . $request->file('driver_license')->getClientOriginalName();
+        }
+        if ($request->file('electrician_license')) {
+            $fileName = time() . '_' . $request->file('electrician_license')->getClientOriginalName();
+            $filePath = $request->file('electrician_license')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->electrician_license = time() . '_' . $request->file('electrician_license')->getClientOriginalName();
+        }
+        if ($request->file('vehicle_insurance')) {
+            $fileName = time() . '_' . $request->file('vehicle_insurance')->getClientOriginalName();
+            $filePath = $request->file('vehicle_insurance')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->vehicle_insurance = time() . '_' . $request->file('vehicle_insurance')->getClientOriginalName();
+        }
+        if ($request->file('liability_insurance')) {
+            $fileName = time() . '_' . $request->file('liability_insurance')->getClientOriginalName();
+            $filePath = $request->file('liability_insurance')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->liability_insurance = time() . '_' . $request->file('liability_insurance')->getClientOriginalName();
+        }
+        if ($request->file('master_agreement')) {
+            $fileName = time() . '_' . $request->file('master_agreement')->getClientOriginalName();
+            $filePath = $request->file('master_agreement')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->master_agreement = time() . '_' . $request->file('master_agreement')->getClientOriginalName();
+        }
+        if ($request->file('evcharger_certification')) {
+            $fileName = time() . '_' . $request->file('evcharger_certification')->getClientOriginalName();
+            $filePath = $request->file('evcharger_certification')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->evcharger_certification = time() . '_' . $request->file('evcharger_certification')->getClientOriginalName();
+        }
+        if ($request->file('w9_certification')) {
+            $fileName = time() . '_' . $request->file('w9_certification')->getClientOriginalName();
+            $filePath = $request->file('w9_certification')->storeAs('uploads/users', $fileName, 'public');
+            $userObj->w9_certification = time() . '_' . $request->file('w9_certification')->getClientOriginalName();
+        }
+        $userObj->save();
         return redirect()->route('admin.users.index');
     }
 
     public function show(User $user)
     {
         abort_if(Gate::denies('user_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $user->load('roles');
-
         return view('admin.users.show', compact('user'));
     }
 
@@ -84,5 +116,20 @@ class UsersController extends Controller
         User::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function status(User $user, $status)
+    {
+
+        $user->is_approved = ($status ? 0 : 1);
+        $user->save();
+        return back();
+    }
+    public function verify(User $user, $verify)
+    {
+
+        $user->email_verified_at = ($verify ? NULL : date('Y-m-d H:i:s'));
+        $user->save();
+        return back();
     }
 }
