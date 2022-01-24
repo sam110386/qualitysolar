@@ -18,10 +18,78 @@
                     <i class="fa-fw fas fa-user nav-icon">
 
                     </i>
-                    Dealers
+                    Vendors
                 </a>
             </li>
             @endcan
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link  nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-users nav-icon">
+
+                    </i>
+                    Leads
+                </a>
+                <ul class="nav-dropdown-items">
+
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.index") }}" class="nav-link {{request()->is('admin/leads/index') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            New
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.assigned") }}" class="nav-link {{ request()->is('admin/leads/assigned') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Assigned
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.accepted") }}" class="nav-link {{  request()->is('admin/leads/accepted') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Accepted
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.rejected") }}" class="nav-link {{ request()->is('admin/leads/rejected') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Rejected
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.active") }}" class="nav-link {{ request()->is('admin/leads/active') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Active
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.completed") }}" class="nav-link {{ request()->is('admin/leads/completed') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Completed
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route("admin.leads.canceled") }}" class="nav-link {{ request()->is('admin/leads/canceled') ? 'active' : '' }}">
+                            <i class="fa-fw fas fa-question-circle nav-icon">
+
+                            </i>
+                            Canceled
+                        </a>
+                    </li>
+
+                </ul>
+            </li>
             <?php /*
             @can('user_management_access')
             <li class="nav-item nav-dropdown">
@@ -110,16 +178,7 @@
                     </a>
                 </li>
             @endcan */ ?>
-            @can('lead_access')
-            <li class="nav-item">
-                <a href="{{ route("admin.leads.index") }}" class="nav-link {{ request()->is('admin/leads') || request()->is('admin/leads/*') ? 'active' : '' }}">
-                    <i class="fa-fw fas fa-question-circle nav-icon">
 
-                    </i>
-                    {{ trans('cruds.lead.title') }}
-                </a>
-            </li>
-            @endcan
             @can('dealer_access')
             <li class="nav-item">
                 <a href="{{ route("admin.dealers.index") }}" class="nav-link {{ request()->is('admin/dealers') || request()->is('admin/dealers/*') ? 'active' : '' }}">

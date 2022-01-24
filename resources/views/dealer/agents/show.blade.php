@@ -1,9 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('content')
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} Vendor
+        {{ trans('global.show') }} Dealer
     </div>
 
     <div class="card-body">
@@ -65,7 +65,7 @@
                     </tr>
                 </tbody>
             </table>
-            <a class="btn btn-primary" href="{{ route('admin.users.index') }}">
+            <a class="btn btn-primary" href="{{ route('dealer.agents.index') }}">
                 {{ trans('global.back_to_list') }}
             </a>
         </div>

@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
                 return redirect()->route('dealer.completeprofile');
             }
             if (!$user->isAdmin() && $user->userIsApproved()) {
-                return redirect()->route('dealer.home');
+                return redirect()->route('dealer.dashboard');
             }
             return redirect('/');
         }

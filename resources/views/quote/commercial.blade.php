@@ -151,6 +151,7 @@
                         <div class="form-row">
                             <div class="col">
                                 <input type="text" class="form-control" name="address" id="address" placeholder="Address" required>
+                                <input type="hidden" name="taxstate" id="taxstate" value="">
                             </div>
                         </div>
                     </div>
@@ -472,20 +473,37 @@
     jQuery(document).ready(function() {
         var input = document.getElementById('address');
         var options = {
-            types: ['geocode'],
+            fields: ["address_components", "geometry"],
+            types: ["address"],
             componentRestrictions: {
                 country: "us"
             },
         };
         autocomplete = new google.maps.places.Autocomplete(input, options);
-        /*google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            var placeorg = autocomplete.getPlace();
-            document.getElementById('TextOriginlatlng').value = placeorg.geometry.location.lat() + ',' + placeorg.geometry.location.lng();
-        });*/
+        google.maps.event.addListener(autocomplete, 'place_changed', fillInAddress);
         $.ajaxSetup({
             cache: false
         });
     });
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        //https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+        const place = autocomplete.getPlace();
+        // Get each component of the address from the place details,
+        // and then fill-in the corresponding field on the form.
+        // place.address_components are google.maps.GeocoderAddressComponent objects
+        // which are documented at http://goo.gle/3l5i5Mr
+        for (const component of place.address_components) {
+            const componentType = component.types[0];
+            switch (componentType) {
+                case "administrative_area_level_1": {
+                    document.querySelector("#taxstate").value = component.short_name;
+                    break;
+                }
+            }
+        }
+    }
 </script>
 @parent
 

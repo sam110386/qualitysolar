@@ -40,6 +40,7 @@ class Lead extends Model implements HasMedia
         'phone',
         'questions',
         'assigned_to_user_id',
+        'assigned_to_agent_id',
         'ev_charger_type',
         "make",
         "model"
@@ -88,6 +89,10 @@ class Lead extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'assigned_to_user_id');
     }
+    public function assigned_to_agent()
+    {
+        return $this->belongsTo(User::class, 'assigned_to_agent_id');
+    }
 
     public function scopeFilterLeads($query)
     {
@@ -110,7 +115,7 @@ class Lead extends Model implements HasMedia
 
     public function sendCommentNotification($comment)
     {
-        $users = \App\Models\User::where(function ($q) {
+        /*$users = \App\Models\User::where(function ($q) {
             $q->whereHas('roles', function ($q) {
                 return $q->where('title', 'Agent');
             })
@@ -118,7 +123,7 @@ class Lead extends Model implements HasMedia
                     $q->whereHas('comments', function ($q) {
                         return $q->whereLeadId($this->id);
                     })
-                        ->orWhereHas('leads', function ($q) {
+                    ->orWhereHas('leads', function ($q) {
                             return $q->whereId($this->id);
                         });
                 });
@@ -137,6 +142,6 @@ class Lead extends Model implements HasMedia
         Notification::send($users, $notification);
         if ($comment->user_id && $this->author_email) {
             Notification::route('mail', $this->author_email)->notify($notification);
-        }
+        }*/
     }
 }

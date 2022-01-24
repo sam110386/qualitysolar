@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route("admin.leads.update", [$lead->id]) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("dealer.leads.update", [$lead->id]) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group {{ $errors->has('title') ? 'has-error' : '' }}">
@@ -127,9 +127,8 @@
 @section('scripts')
 <script>
     var uploadedAttachmentsMap = {}
-
     Dropzone.options.attachmentsDropzone = {
-        url: "{{route('admin.leads.storeMedia')}}",
+        url: "{{ route('dealer.leads.storeMedia ') }}",
         maxFilesize: 2, // MB
         addRemoveLinks: true,
         headers: {
@@ -153,14 +152,17 @@
             $('form').find('input[name="attachments[]"][value="' + name + '"]').remove()
         },
         init: function() {
-            var files = @json($attachments);
+            @if(isset($lead) && $lead - > attachments)
+            var files = {
+                !!json_encode($lead - > attachments) !!
+            }
             for (var i in files) {
                 var file = files[i]
                 this.options.addedfile.call(this, file)
                 file.previewElement.classList.add('dz-complete')
                 $('form').append('<input type="hidden" name="attachments[]" value="' + file.file_name + '">')
             }
-
+            @endif
         },
         error: function(file, response) {
             if ($.type(response) === 'string') {

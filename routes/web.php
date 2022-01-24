@@ -52,7 +52,27 @@ Route::group(
         Route::get('completeprofile', 'HomeController@completeprofile')->name('completeprofile');
         Route::post('completeprofilesave', 'HomeController@completeprofilesave')->name('completeprofile_save');
         Route::get('thank-you', 'HomeController@thankyou')->name('thank-you');
-        Route::get('home', 'HomeController@index')->name('home'); //->middleware('approved');
+        //profile pages
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard')->middleware('approved');
+        // Leads
+        Route::get('leads/accepted', 'LeadsController@accepted')->name('leads.accepted')->middleware('approved');
+
+        Route::get('leads/active', 'LeadsController@active')->name('leads.active')->middleware('approved');
+        Route::get('leads/complete', 'LeadsController@complete')->name('leads.complete')->middleware('approved');
+        Route::get('leads/accept/{id}', 'LeadsController@accept')->name('leads.accept')->middleware('approved');
+        Route::get('leads/reject/{id}', 'LeadsController@reject')->name('leads.reject')->middleware('approved');
+        Route::get('leads/activate/{id}', 'LeadsController@activate')->name('leads.activate')->middleware('approved');
+        Route::get('leads/completelead/{id}', 'LeadsController@completelead')->name('leads.completelead')->middleware('approved');
+        Route::delete('leads/destroy', 'LeadsController@massDestroy')->name('leads.massDestroy')->middleware('approved');
+        Route::post('leads/media', 'LeadsController@storeMedia')->name('leads.storeMedia')->middleware('approved');
+        Route::post('leads/comment/{lead}', 'LeadsController@storeComment')->name('leads.storeComment')->middleware('approved');
+        Route::resource('leads', 'LeadsController')->middleware('approved');
+        //Agents Pages
+        Route::delete('agents/destroy', 'AgentsController@massDestroy')->name('agents.massDestroy')->middleware('approved');;
+        Route::get('agents/status/{user}/{status}', 'AgentsController@status')->name('agents.status')->middleware('approved');;
+        Route::get('agents/verify/{user}/{status}', 'AgentsController@verify')->name('agents.verify')->middleware('approved');;
+
+        Route::resource('agents', 'AgentsController')->middleware('approved');;
     }
 );
 /*
@@ -91,6 +111,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('categories', 'CategoriesController');
 
     // Leads
+    Route::get('leads/assigned', 'LeadsController@assigned')->name('leads.assigned');
+
+    Route::get('leads/accepted', 'LeadsController@accepted')->name('leads.accepted');
+    Route::get('leads/rejected', 'LeadsController@rejected')->name('leads.rejected');
+
+    Route::get('leads/active', 'LeadsController@active')->name('leads.active');
+    Route::get('leads/completed', 'LeadsController@completed')->name('leads.completed');
+    Route::get('leads/canceled', 'LeadsController@canceled')->name('leads.canceled');
+
     Route::delete('leads/destroy', 'LeadsController@massDestroy')->name('leads.massDestroy');
     Route::post('leads/media', 'LeadsController@storeMedia')->name('leads.storeMedia');
     Route::post('leads/comment/{lead}', 'LeadsController@storeComment')->name('leads.storeComment');

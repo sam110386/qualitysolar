@@ -77,8 +77,8 @@ class LoginController extends Controller
             if (!auth()->user()->userIsApproved()) {
                 return redirect()->route('dealer.completeprofile');
             }
-            if (auth()->user()->userIsApproved()) {
-                return redirect()->route('dealer.home');
+            if (!auth()->user()->isAdmin() && auth()->user()->userIsApproved()) {
+                return redirect()->route('dealer.dashboard');
             }
         }
 

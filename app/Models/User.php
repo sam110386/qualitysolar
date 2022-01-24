@@ -22,7 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    protected $dates = [
+    protected $casts = [
         'updated_at',
         'created_at',
         'deleted_at',

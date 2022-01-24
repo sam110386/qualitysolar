@@ -24,9 +24,9 @@ class LeadsController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $query = Lead::with(['status', 'category', 'assigned_to_user', 'comments'])
+            $query = Lead::where('status_id', 1)->with(['status', 'category'])
                 ->filterLeads($request)
-                ->select(sprintf('%s.*', (new Lead)->table));
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
             $table = Datatables::of($query);
 
             $table->addColumn('placeholder', '&nbsp;');
@@ -58,12 +58,70 @@ class LeadsController extends Controller
                 return $row->status ? $row->status->color : '#000000';
             });
 
-            //$table->addColumn('priority_name', function ($row) {
-            // return $row->priority ? $row->priority->name : '';
-            //});
-            //$table->addColumn('priority_color', function ($row) {
-            //  return $row->priority ? $row->priority->color : '#000000';
-            //});
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category']);
+
+            return $table->make(true);
+        }
+
+        $statuses = Status::all();
+        $categories = Category::all();
+
+        return view('admin.leads.index', compact('statuses', 'categories'));
+    }
+
+    public function assigned(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 2)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
 
             $table->addColumn('category_name', function ($row) {
                 return $row->category ? $row->category->name : '';
@@ -77,12 +135,9 @@ class LeadsController extends Controller
             });
 
             $table->addColumn('assigned_to_user_name', function ($row) {
-                return $row->assigned_to_user ? $row->assigned_to_user->name : '';
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
             });
 
-            $table->addColumn('comments_count', function ($row) {
-                return $row->comments->count();
-            });
 
             $table->addColumn('view_link', function ($row) {
                 return route('admin.leads.show', $row->id);
@@ -93,10 +148,335 @@ class LeadsController extends Controller
             return $table->make(true);
         }
 
-        $statuses = Status::all();
         $categories = Category::all();
+        return view('admin.leads.assigned', compact('categories'));
+    }
 
-        return view('admin.leads.index', compact('statuses', 'categories'));
+    public function accepted(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 3)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
+
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+            $table->addColumn('assigned_to_user_name', function ($row) {
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
+            });
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category', 'assigned_to_user']);
+
+            return $table->make(true);
+        }
+
+        $categories = Category::all();
+        return view('admin.leads.accepted', compact('categories'));
+    }
+    public function rejected(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 4)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
+
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+            $table->addColumn('assigned_to_user_name', function ($row) {
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
+            });
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category', 'assigned_to_user']);
+
+            return $table->make(true);
+        }
+
+        $categories = Category::all();
+        return view('admin.leads.accepted', compact('categories'));
+    }
+    public function active(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 5)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
+
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+            $table->addColumn('assigned_to_user_name', function ($row) {
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
+            });
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category', 'assigned_to_user']);
+
+            return $table->make(true);
+        }
+
+        $categories = Category::all();
+        return view('admin.leads.active', compact('categories'));
+    }
+
+    public function completed(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 6)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
+
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+            $table->addColumn('assigned_to_user_name', function ($row) {
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
+            });
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category', 'assigned_to_user']);
+
+            return $table->make(true);
+        }
+
+        $categories = Category::all();
+        return view('admin.leads.completed', compact('categories'));
+    }
+    public function canceled(Request $request)
+    {
+        if ($request->ajax()) {
+            $query = Lead::where('status_id', 7)->with(['status', 'category', 'assigned_to_user'])
+                ->filterLeads($request)
+                ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
+
+            $table = Datatables::of($query);
+            $table->addColumn('placeholder', '&nbsp;');
+            $table->addColumn('actions', '&nbsp;');
+
+            $table->editColumn('actions', function ($row) {
+                $viewGate      = 'lead_show';
+                $editGate      = 'lead_edit';
+                $deleteGate    = 'lead_delete';
+                $crudRoutePart = 'leads';
+
+                return view('partials.datatablesActions', compact(
+                    'viewGate',
+                    'editGate',
+                    'deleteGate',
+                    'crudRoutePart',
+                    'row'
+                ));
+            });
+
+            $table->editColumn('id', function ($row) {
+                return $row->id ? $row->id : "";
+            });
+
+            $table->addColumn('status_name', function ($row) {
+                return $row->status ? $row->status->name : '';
+            });
+            $table->addColumn('status_color', function ($row) {
+                return $row->status ? $row->status->color : '#000000';
+            });
+
+            $table->addColumn('category_name', function ($row) {
+                return $row->category ? $row->category->name : '';
+            });
+            $table->addColumn('category_color', function ($row) {
+                return $row->category ? $row->category->color : '#000000';
+            });
+
+            $table->editColumn('name', function ($row) {
+                return $row->fname ? $row->fname . ' ' . $row->lname : "";
+            });
+
+            $table->addColumn('assigned_to_user_name', function ($row) {
+                return  $row->assigned_to_user ? $row->assigned_to_user->name : '';
+            });
+
+
+            $table->addColumn('view_link', function ($row) {
+                return route('admin.leads.show', $row->id);
+            });
+
+            $table->rawColumns(['actions', 'placeholder', 'status', 'category', 'assigned_to_user']);
+
+            return $table->make(true);
+        }
+
+        $categories = Category::all();
+        return view('admin.leads.canceled', compact('categories'));
     }
 
     public function create()
@@ -134,8 +514,6 @@ class LeadsController extends Controller
 
         $statuses = Status::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $priorities = Priority::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
         $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $assigned_to_users = User::whereHas('roles', function ($query) {
@@ -144,9 +522,9 @@ class LeadsController extends Controller
             ->pluck('name', 'id')
             ->prepend(trans('global.pleaseSelect'), '');
 
-        $lead->load('status', 'priority', 'category', 'assigned_to_user');
-
-        return view('admin.leads.edit', compact('statuses', 'priorities', 'categories', 'assigned_to_users', 'lead'));
+        $lead->load('status', 'category', 'assigned_to_user');
+        $attachments = isset($lead->attachments) ? $lead->attachments : [];
+        return view('admin.leads.edit', compact('statuses', 'categories', 'assigned_to_users', 'attachments', 'lead'));
     }
 
     public function update(UpdateLeadRequest $request, Lead $lead)
@@ -175,10 +553,13 @@ class LeadsController extends Controller
     public function show(Lead $lead)
     {
         abort_if(Gate::denies('lead_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $lead->load('status', 'category', 'assigned_to_user', 'comments');
 
-        $lead->load('status', 'priority', 'category', 'assigned_to_user', 'comments');
+        $questions = json_decode($lead->questions, 1);
+        $defindQuestions = $lead->category_id == 2 ? config('product.commercial_questions') : config('product.residential_questions');
 
-        return view('admin.leads.show', compact('lead'));
+
+        return view('admin.leads.show', compact('lead', 'questions', 'defindQuestions'));
     }
 
     public function destroy(Lead $lead)

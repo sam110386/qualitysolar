@@ -1,14 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-@can('lead_create')
-<div style="margin-bottom: 10px;" class="row">
-  <div class="col-lg-12">
-    <a class="btn btn-success" href="{{ route("admin.leads.create") }}">
-      {{ trans('global.add') }} {{ trans('cruds.lead.title_singular') }}
-    </a>
-  </div>
-</div>
-@endcan
+
 <div class="card">
   <div class="card-header">
     {{ trans('cruds.lead.title_singular') }} {{ trans('global.list') }}
@@ -36,7 +28,9 @@
           <th>
             {{ trans('Category') }}
           </th>
-
+          <th>
+            {{ trans('Vendor') }}
+          </th>
           <th>
             &nbsp;
           </th>
@@ -52,6 +46,8 @@
   $(function() {
     let filters = `
 <form class="d-flex" id="filtersForm">
+
+  
   <div class="form-group mx-sm-3 mb-2">
     <select class="form-control" name="category">
       <option value="">All categories</option>
@@ -112,7 +108,7 @@
       retrieve: true,
       aaSorting: [],
       ajax: {
-        url: "{{ route('admin.leads.index') }}",
+        url: "{{ route('admin.leads.completed') }}",
         data: {
           'status': searchParams.get('status'),
           'category': searchParams.get('category')
@@ -150,7 +146,10 @@
             return '<span style="color:' + row.category_name + '">' + data + '</span>';
           }
         },
-
+        {
+          data: 'assigned_to_user_name',
+          name: 'assigned_to_user.name'
+        },
         {
           data: 'actions',
           name: "{{ trans('global.actions ') }}"

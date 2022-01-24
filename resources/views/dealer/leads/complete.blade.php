@@ -1,11 +1,9 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('content')
 @can('lead_create')
 <div style="margin-bottom: 10px;" class="row">
   <div class="col-lg-12">
-    <a class="btn btn-success" href="{{ route("admin.leads.create") }}">
-      {{ trans('global.add') }} {{ trans('cruds.lead.title_singular') }}
-    </a>
+
   </div>
 </div>
 @endcan
@@ -36,13 +34,17 @@
           <th>
             {{ trans('Category') }}
           </th>
-
+          <th>
+            {{ trans('Agent') }}
+          </th>
           <th>
             &nbsp;
           </th>
         </tr>
       </thead>
     </table>
+
+
   </div>
 </div>
 @endsection
@@ -52,6 +54,8 @@
   $(function() {
     let filters = `
 <form class="d-flex" id="filtersForm">
+ 
+  
   <div class="form-group mx-sm-3 mb-2">
     <select class="form-control" name="category">
       <option value="">All categories</option>
@@ -65,45 +69,7 @@
       $('#filtersForm').submit();
     })
     let dtButtons = []
-    @can('lead_delete')
-    let deleteButtonTrans = "{{ trans('global.datatables.delete') }}";
-    let deleteButton = {
-      text: deleteButtonTrans,
-      url: "{{ route('admin.leads.massDestroy') }}",
-      className: 'btn-danger',
-      action: function(e, dt, node, config) {
-        var ids = $.map(dt.rows({
-          selected: true
-        }).data(), function(entry) {
-          return entry.id
-        });
 
-        if (ids.length === 0) {
-          alert("{{ trans('global.datatables.zero_selected') }}")
-
-          return
-        }
-
-        if (confirm("{{ trans('global.areYouSure') }}")) {
-          $.ajax({
-              headers: {
-                'x-csrf-token': _token
-              },
-              method: 'POST',
-              url: config.url,
-              data: {
-                ids: ids,
-                _method: 'DELETE'
-              }
-            })
-            .done(function() {
-              location.reload()
-            })
-        }
-      }
-    }
-    dtButtons.push(deleteButton)
-    @endcan
     let searchParams = new URLSearchParams(window.location.search)
     let dtOverrideGlobals = {
       buttons: dtButtons,
@@ -112,7 +78,7 @@
       retrieve: true,
       aaSorting: [],
       ajax: {
-        url: "{{ route('admin.leads.index') }}",
+        url: "{{ route('dealer.leads.complete') }}",
         data: {
           'status': searchParams.get('status'),
           'category': searchParams.get('category')
@@ -150,7 +116,10 @@
             return '<span style="color:' + row.category_name + '">' + data + '</span>';
           }
         },
-
+        {
+          data: 'assigned_to_agent_name',
+          name: 'assigned_to_agent.name'
+        },
         {
           data: 'actions',
           name: "{{ trans('global.actions ') }}"

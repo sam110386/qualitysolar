@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('content')
 
 <div class="card">
@@ -73,14 +73,16 @@
                         </td>
                     </tr>
 
+
                     <tr>
                         <th>
-                            {{ trans('cruds.lead.fields.assigned_to_user') }}
+                            Agent
                         </th>
                         <td>
-                            {{ $lead->assigned_to_user->name ?? '' }}
+                            {{ $lead->assigned_to_agent->name ?? '' }}
                         </td>
                     </tr>
+                    @if($lead->assigned_to_user_id==auth()->user()->id)
                     <tr>
                         <th>
                             {{ trans('cruds.lead.fields.comments') }}
@@ -102,7 +104,7 @@
                             </div>
                             <hr />
                             @endforelse
-                            <form action="{{ route('admin.leads.storeComment', $lead->id) }}" method="POST">
+                            <form action="{{ route('dealer.leads.storeComment', $lead->id) }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label for="comment_text">Leave a comment</label>
@@ -112,17 +114,18 @@
                             </form>
                         </td>
                     </tr>
+                    @endif
                 </tbody>
             </table>
         </div>
-        <a class="btn btn-default my-2" href="{{ route('admin.leads.index') }}">
+        <a class="btn btn-default my-2" href="{{ url()->previous() }}">
             {{ trans('global.back_to_list') }}
         </a>
-
-        <a href="{{ route('admin.leads.edit', $lead->id) }}" class="btn btn-primary">
+        @if(0 && $lead->assigned_to_user_id==auth()->user()->id)
+        <a href="{{ route('dealer.leads.edit', $lead->id) }}" class="btn btn-primary">
             @lang('global.edit') @lang('cruds.lead.title_singular')
         </a>
-
+        @endif
         <nav class="mb-3">
             <div class="nav nav-tabs">
 

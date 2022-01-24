@@ -145,7 +145,7 @@ return [
             'author_name_helper'      => '',
             'author_email'            => 'Author Email',
             'author_email_helper'     => '',
-            'assigned_to_user'        => 'Assigned To User',
+            'assigned_to_user'        => 'Assigned To Vendor',
             'assigned_to_user_helper' => '',
             'comments'                => 'Comments',
             'comments_helper'         => '',
