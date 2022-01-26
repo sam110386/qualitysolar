@@ -44,7 +44,7 @@ class HomeController extends Controller
             'description' => 'required',
             'company_name' => 'required',
             'address'   => 'required',
-            'phone'  => 'required',
+
             'driver_license' => 'required|mimes:docx,txt,doc,pdf,jpg,png|max:4096',
             'electrician_license' => 'required|mimes:docx,txt,doc,pdf,jpg,png|max:4096',
             'vehicle_insurance' => 'required|mimes:docx,txt,doc,pdf,jpg,png|max:4096',
