@@ -3,8 +3,11 @@
 @can('lead_create')
 <div style="margin-bottom: 10px;" class="row">
   <div class="col-lg-12">
-    <a class="btn btn-success" href="{{ route("admin.leads.create") }}">
-      {{ trans('global.add') }} {{ trans('cruds.lead.title_singular') }}
+    <a class="btn btn-success" href="{{ route("admin.leads.createresidential") }}">
+      {{ trans('global.add') }} Residential Lead
+    </a>
+    <a class="btn btn-success" href="{{ route("admin.leads.createcomercial") }}">
+      {{ trans('global.add') }} Commercial Lead
     </a>
   </div>
 </div>

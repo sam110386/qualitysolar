@@ -94,7 +94,6 @@
                                 <select type="text" id="Modal" name="Modal" class="form-control required" required="required" placeholder="Modal">
 
                                 </select>
-                                </select>
                             </div>
                         </div>
                     </div>

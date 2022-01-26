@@ -147,7 +147,7 @@ return [
             'author_email_helper'     => '',
             'assigned_to_user'        => 'Assigned To Vendor',
             'assigned_to_user_helper' => '',
-            'comments'                => 'Comments',
+            'comments'                => 'Change Order',
             'comments_helper'         => '',
             'created_at'              => 'Created at',
             'created_at_helper'       => '',

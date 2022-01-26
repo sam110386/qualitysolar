@@ -12,10 +12,14 @@ use App\Models\Priority;
 use App\Models\Status;
 use App\Models\Lead;
 use App\Models\User;
+use App\Models\LeadSurvey;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\Admin\AssignToVendorLeadNotification;
+use Exception;
 
 class LeadsController extends Controller
 {
@@ -479,57 +483,113 @@ class LeadsController extends Controller
         return view('admin.leads.canceled', compact('categories'));
     }
 
-    public function create()
+    public function createresidential()
     {
         abort_if(Gate::denies('lead_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $makemodel = config('product.makemodel');
+        $make = array_keys($makemodel);
+        $usstates = config('product.usstates');
+        $residentialquestions = config('product.residential_questions');
+        $action = 'Add';
+        return view('admin.leads.createresidential', compact('action', "make", "makemodel", 'usstates', 'residentialquestions'));
+    }
 
-        $statuses = Status::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+    public  function saveresidential(Request $request)
+    {
+        if (!empty($request->id)) {
+            $lead = Lead::where('id', $request->id)->firstOrNew();
+        } else {
+            $lead = new Lead();
+        }
+        $lead->fname = $request->contact_info_first_name;
+        $lead->lname = $request->contact_info_last_name;
+        $lead->email = $request->contact_info_email;
+        $lead->phone = $request->contact_info_phone;
+        $lead->make = $request->Brand;
+        $lead->model = $request->Modal;
+        $lead->ev_charger_type = $request->ev_chargers_type;
+        $lead->expected_install_days = $request->looking_to_install_your_EV_charger;
+        $lead->address = $request->address;
+        $lead->state = $request->state;
+        $lead->quote = $request->quote;
+        $lead->installation_date = $request->installation_date;
+        $lead->questions = json_encode($request->all());
+        $lead->category_id = 1;
+        $lead->status_id = 1;
+        $lead->save();
+        return redirect('/admin/leads')->with("status", "Lead created successfully");
+    }
 
-        $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+    public function savecomercial(Request $request)
+    {
+        if (!empty($request->id)) {
+            $lead = Lead::where('id', $request->id)->firstOrNew();
+        } else {
+            $lead = new Lead();
+        }
+        $lead->fname = $request->contact_info_first_name;
+        $lead->lname = $request->contact_info_last_name;
+        $lead->email = $request->contact_info_email;
+        $lead->phone = $request->contact_info_phone;
+        $lead->address = $request->address;
+        $lead->state = $request->state;
+        $lead->expected_install_days = $request->looking_to_install_your_EV_charger;
+        $lead->quote = $request->quote;
+        $lead->installation_date = $request->installation_date;
+        $lead->questions = json_encode($request->all());
+        $lead->category_id = 2;
+        $lead->status_id = 1;
+        $lead->save();
 
-        $assigned_to_users = User::whereHas('roles', function ($query) {
-            $query->whereId(2);
-        })
-            ->pluck('name', 'id')
-            ->prepend(trans('global.pleaseSelect'), '');
+        return redirect('/admin/leads')->with("status", "Lead created successfully");
+    }
 
-        return view('admin.leads.create', compact('statuses', 'categories', 'assigned_to_users'));
+
+
+    public function createcomercial()
+    {
+        abort_if(Gate::denies('lead_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $usstates = config('product.usstates');
+        $commercialquestions = config('product.commercial_questions');
+        $action = 'Add';
+        return view('admin.leads.createcomercial', compact('action', 'usstates', 'commercialquestions'));
     }
 
     public function store(StoreLeadRequest $request)
     {
-        $dataToSave = $request->all();
+        /* $dataToSave = $request->all();
         $dataToSave['questions'] = json_encode($dataToSave['questions']);
         $lead = Lead::create($dataToSave);
         foreach ($request->input('attachments', []) as $file) {
             $lead->addMedia(storage_path('tmp/uploads/' . $file))->toMediaCollection('attachments');
         }
 
-        return redirect()->route('admin.leads.index');
+        return redirect()->route('admin.leads.index');*/
     }
 
     public function edit(Lead $lead)
     {
         abort_if(Gate::denies('lead_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $statuses = Status::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $assigned_to_users = User::whereHas('roles', function ($query) {
-            $query->whereId(2);
-        })
-            ->pluck('name', 'id')
-            ->prepend(trans('global.pleaseSelect'), '');
-
-        $lead->load('status', 'category', 'assigned_to_user');
-        $attachments = isset($lead->attachments) ? $lead->attachments : [];
-        return view('admin.leads.edit', compact('statuses', 'categories', 'assigned_to_users', 'attachments', 'lead'));
+        $action = 'Edit';
+        if ($lead->category_id == 2) {
+            $usstates = config('product.usstates');
+            $commercialquestions = config('product.commercial_questions');
+            $quesns = json_decode($lead->questions, 1);
+            return view('admin.leads.createcomercial', compact('action', 'lead', 'usstates', 'commercialquestions', 'quesns'));
+        }
+        if ($lead->category_id == 1) {
+            $makemodel = config('product.makemodel');
+            $make = array_keys($makemodel);
+            $usstates = config('product.usstates');
+            $residentialquestions = config('product.residential_questions');
+            $quesns = json_decode($lead->questions, 1);
+            return view('admin.leads.createresidential', compact('action', 'lead', "make", "makemodel", 'usstates', 'residentialquestions', 'quesns'));
+        }
     }
 
     public function update(UpdateLeadRequest $request, Lead $lead)
     {
-        $lead->update($request->all());
+        /* $lead->update($request->all());
 
         if (count($lead->attachments) > 0) {
             foreach ($lead->attachments as $media) {
@@ -547,7 +607,7 @@ class LeadsController extends Controller
             }
         }
 
-        return redirect()->route('admin.leads.index');
+        return redirect()->route('admin.leads.index');*/
     }
 
     public function show(Lead $lead)
@@ -557,9 +617,11 @@ class LeadsController extends Controller
 
         $questions = json_decode($lead->questions, 1);
         $defindQuestions = $lead->category_id == 2 ? config('product.commercial_questions') : config('product.residential_questions');
-
-
-        return view('admin.leads.show', compact('lead', 'questions', 'defindQuestions'));
+        $vendors = User::where('is_approved', 1)->whereHas("roles", function ($q) {
+            $q->where("id", 2);
+        })->pluck('name', 'id');
+        $leadid = $lead->id;
+        return view('admin.leads.show', compact('lead', 'questions', 'defindQuestions', 'vendors', 'leadid'));
     }
 
     public function destroy(Lead $lead)
@@ -594,5 +656,88 @@ class LeadsController extends Controller
         $lead->sendCommentNotification($comment);
 
         return redirect()->back()->withStatus('Your comment added successfully');
+    }
+
+    public function assignvendor(Request $request)
+    {
+        try {
+            $lead = Lead::where('id', $request->leadid)->firstOrFail();
+            if (!empty($request->vendorid)) {
+                $vendor = User::where('id', $request->vendorid)->whereHas("roles", function ($q) {
+                    $q->where("id", 2);
+                })->firstOrFail();
+                $lead->status_id = 2;
+                $lead->assigned_to_user_id = $vendor->id;
+                $lead->save();
+                Notification::route('mail', [
+                    $vendor->email => 'Vehya',
+                ])->notify(new AssignToVendorLeadNotification($lead));
+            } else {
+                $lead->status_id = 1;
+                $lead->assigned_to_user_id = null;
+                $lead->save();
+            }
+            return ["status" => true, "message" => "Your request processed successfully."];
+        } catch (Exception $e) {
+            return ["status" => false, "message" => $e->getMessage()];
+        }
+    }
+
+    public function updatelead(Request $request, $id)
+    {
+        $lead = Lead::where('id', $id)->firstOrFail();
+        $lead->installation_date = $request->installation_date;
+        $lead->online_assessment_completed = $request->online_assessment_completed;
+        $lead->quote = $request->quote;
+        $lead->save();
+        return redirect()->back()->with('status', 'Updated successfully');
+    }
+    public function permitupdate(Request $request, $id)
+    {
+        $lead = Lead::where('id', $id)->firstOrFail();
+        $survey = LeadSurvey::where('lead_id', $id)->firstOrNew();
+        $survey->lead_id = $id;
+        $survey->customer_name = $request->customer_name;
+        $survey->address = $request->address;
+        $survey->permit_no = $request->permit_no;
+        $survey->inspection_date = $request->inspection_date;
+        $survey->inspection_completed = $request->inspection_completed;
+        $survey->inspector_name = $request->inspector_name;
+        $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
+    }
+
+    public function surveyupdate(Request $request, $id)
+    {
+
+        $lead = Lead::where('id', $id)->firstOrFail();
+        $survey = LeadSurvey::where('lead_id', $id)->firstOrNew();
+        $survey->lead_id = $id;
+        $survey->charger_completion_of_installation = $request->charger_completion_of_installation;
+        $survey->how_use_charger = $request->how_use_charger;
+        $survey->demonstrate_charger = $request->demonstrate_charger;
+        $survey->interested_service_contract = $request->interested_service_contract;
+        $survey->surveyed_name = $request->surveyed_name;
+        $survey->phone = $request->phone;
+        $survey->email = $request->email;
+        $survey->detail = $request->detail;
+        if ($request->file('charger_installed_image')) {
+            $fileName = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
+            $filePath = $request->file('charger_installed_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->charger_installed_image = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
+        }
+        if ($request->file('electrical_panel_image')) {
+            $fileName = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
+            $filePath = $request->file('electrical_panel_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->electrical_panel_image = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
+        }
+        if ($request->file('exterior_property_image')) {
+            $fileName = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
+            $filePath = $request->file('exterior_property_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->exterior_property_image = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
+        }
+
+        $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
     }
 }

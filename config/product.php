@@ -659,6 +659,7 @@ return [
     "residential_questions" => [
         "ev_chargers_type" => [
             "title" => "Here are the EV chargers we provide based on your vehicle.",
+            "type" => "radio",
             "values" => [
                 "Charger Point Homeflex",
                 "Enelx Juicebox 48",
@@ -668,6 +669,7 @@ return [
         ],
         "considering_an_additional_EV" => [
             "title" => "Are you considering an additional EV within the next year?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -687,12 +689,17 @@ return [
         ],
         "Style_of_home" => [
             "title" => "What style of home?",
+            "type" => "radio",
             "values" => [
-                "Choose One"
+                "Detached",
+                "Townhome",
+                "Multi-Unit",
+                "Other"
             ],
         ],
         "Ownership_Type" => [
             "title" => "Ownership Type",
+            "type" => "radio",
             "values" => [
                 "Own",
                 "Rent",
@@ -702,6 +709,7 @@ return [
 
         "need_permission_from_anyone" => [
             "title" => "Will you need permission from anyone to install this EV charger?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -709,6 +717,7 @@ return [
         ],
         "EV_charger_be_installed" => [
             "title" => "Where will the EV charger be installed?",
+            "type" => "radio",
             "values" => [
                 "Interior",
                 "Exterior"
@@ -717,6 +726,7 @@ return [
         ],
         "breaker_panel_to_the_EV_charger" => [
             "title" => "Approximately how far is it from the breaker panel to the EV charger?",
+            "type" => "radio",
             "values" => [
                 "5FT",
                 "10FT",
@@ -727,6 +737,7 @@ return [
         ],
         "same_wall_as_the_breaker_panel" => [
             "title" => "Will the EV charger be located on the same wall as the breaker panel?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -735,6 +746,7 @@ return [
         ],
         "electrical_items_at_your_home" => [
             "title" => "Please choose the electrical items at your home.",
+            "type" => "checkbox",
             "values" => [
                 "Washer",
                 "Dryer",
@@ -754,6 +766,7 @@ return [
         ],
         "looking_to_install_your_EV_charger" => [
             "title" => "When are you looking to install your EV charger?",
+            "type" => "radio",
             "values" => [
                 "1-3 Weeks",
                 "1 Month",
@@ -763,6 +776,7 @@ return [
         ],
         "interested_in_financing" => [
             "title" => "Are you interested in financing?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -779,6 +793,7 @@ return [
     "commercial_questions" => [
         "interested_in_financing" => [
             "title" => "Are you interested in financing?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -787,6 +802,7 @@ return [
 
         "some_basic_info" => [
             "title" => "What type of EV do you have?",
+            "type" => "radio",
             "values" => [
                 "Level 1",
                 "Level 2",
@@ -795,6 +811,7 @@ return [
         ],
         "vehicles_be_charging_at_once" => [
             "title" => "Could multiple vehicles be charging at once?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -802,6 +819,7 @@ return [
         ],
         "providing_EV_charging_as_a_paid_service" => [
             "title" => "Are you thinking of providing EV charging as a paid service?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -809,6 +827,7 @@ return [
         ],
         "property_type" => [
             "title" => "Property type",
+            "type" => "radio",
             "values" => [
                 "Land",
                 "Commercial",
@@ -817,6 +836,7 @@ return [
         ],
         "Ownership_Type" => [
             "title" => "Ownership Type",
+            "type" => "radio",
             "values" => [
                 "Rent",
                 "Owner",
@@ -825,6 +845,7 @@ return [
         ],
         "anyone_to_install_this_EV_charger" => [
             "title" => "Will you need permission from anyone to install this EV charger?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -832,6 +853,7 @@ return [
         ],
         "anyone_to_install_this_EV_charger" => [
             "title" => "Will you need permission from anyone to install this EV charger?",
+            "type" => "radio",
             "values" => [
                 "Yes",
                 "No"
@@ -839,6 +861,7 @@ return [
         ],
         "type_of_industry" => [
             "title" => "What is your type of industry?",
+            "type" => "checkbox",
             "values" => [
                 "Automotive",
                 "Hotel",
@@ -851,6 +874,7 @@ return [
         ],
         "looking_to_install_your_EV_charger" => [
             "title" => "When are you looking to install your EV charger?",
+            "type" => "radio",
             "values" => [
                 "1-3 Weeks",
                 "1 Month",

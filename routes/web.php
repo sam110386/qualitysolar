@@ -60,9 +60,18 @@ Route::group(
         Route::get('leads/active', 'LeadsController@active')->name('leads.active')->middleware('approved');
         Route::get('leads/complete', 'LeadsController@complete')->name('leads.complete')->middleware('approved');
         Route::get('leads/accept/{id}', 'LeadsController@accept')->name('leads.accept')->middleware('approved');
+        Route::get('leads/display/{id}', 'LeadsController@display')->name('leads.display')->middleware('approved');
         Route::get('leads/reject/{id}', 'LeadsController@reject')->name('leads.reject')->middleware('approved');
         Route::get('leads/activate/{id}', 'LeadsController@activate')->name('leads.activate')->middleware('approved');
+
+        Route::post('leads/assignagent', 'LeadsController@assignagent')->name('leads.assignagent')->middleware('approved');
+
         Route::get('leads/completelead/{id}', 'LeadsController@completelead')->name('leads.completelead')->middleware('approved');
+        Route::post('leads/permitupdate/{id}', 'LeadsController@permitupdate')->name('leads.permitupdate')->middleware('approved');
+        Route::post('leads/surveyupdate/{id}', 'LeadsController@surveyupdate')->name('leads.surveyupdate')->middleware('approved');
+
+
+
         Route::delete('leads/destroy', 'LeadsController@massDestroy')->name('leads.massDestroy')->middleware('approved');
         Route::post('leads/media', 'LeadsController@storeMedia')->name('leads.storeMedia')->middleware('approved');
         Route::post('leads/comment/{lead}', 'LeadsController@storeComment')->name('leads.storeComment')->middleware('approved');
@@ -119,6 +128,16 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('leads/active', 'LeadsController@active')->name('leads.active');
     Route::get('leads/completed', 'LeadsController@completed')->name('leads.completed');
     Route::get('leads/canceled', 'LeadsController@canceled')->name('leads.canceled');
+    Route::post('leads/assignvendor', 'LeadsController@assignvendor')->name('leads.assignvendor');
+    Route::post('leads/updatelead/{id}', 'LeadsController@updatelead')->name('leads.updatelead');
+    Route::post('leads/permitupdate/{id}', 'LeadsController@permitupdate')->name('leads.permitupdate');
+    Route::post('leads/surveyupdate/{id}', 'LeadsController@surveyupdate')->name('leads.surveyupdate');
+    //create new lead
+    Route::get('leads/createresidential', 'LeadsController@createresidential')->name('leads.createresidential');
+    Route::get('leads/createcomercial', 'LeadsController@createcomercial')->name('leads.createcomercial');
+    Route::post('leads/saveresidential', 'LeadsController@saveresidential')->name('leads.saveresidential');
+    Route::post('leads/savecomercial', 'LeadsController@savecomercial')->name('leads.savecomercial');
+
 
     Route::delete('leads/destroy', 'LeadsController@massDestroy')->name('leads.massDestroy');
     Route::post('leads/media', 'LeadsController@storeMedia')->name('leads.storeMedia');

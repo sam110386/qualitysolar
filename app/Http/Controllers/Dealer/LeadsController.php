@@ -8,7 +8,6 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyLeadRequest;
 use App\Http\Requests\StoreLeadRequest;
 use App\Http\Requests\UpdateLeadRequest;
-use App\Models\Priority;
 use App\Models\Status;
 use App\Models\Lead;
 use App\Models\User;
@@ -17,6 +16,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 use Yajra\DataTables\Facades\DataTables;
+use App\Notifications\AssignToAgentLeadNotification;
+use App\Notifications\AcceptLeadNotification;
+use App\Notifications\RejectLeadNotification;
+use App\Notifications\LeadActivateNotification;
+use App\Notifications\LeadCompleteNotification;
+use Exception;
+use Illuminate\Support\Facades\Notification;
+use App\Models\LeadSurvey;
 
 class LeadsController extends Controller
 {
@@ -34,12 +41,12 @@ class LeadsController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = true;
+                $displayGate      = true;
                 $acceptGate = false;
                 $crudRoutePart = 'leads';
 
                 return view('partials.dealer.leadActions', compact(
-                    'viewGate',
+                    'displayGate',
                     'crudRoutePart',
                     'acceptGate',
                     'row'
@@ -99,15 +106,13 @@ class LeadsController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $viewGate      = true;
-                $editGate      = false;
+                $displayGate      = true;
                 $rejectGate = 1;
                 $activeGate = 1;
                 $crudRoutePart = 'leads';
 
                 return view('partials.dealer.leadActions', compact(
-                    'viewGate',
-                    'editGate',
+                    'displayGate',
                     'crudRoutePart',
                     'rejectGate',
                     'activeGate',
@@ -289,6 +294,7 @@ class LeadsController extends Controller
 
     public function edit(Lead $lead)
     {
+        dd("Not Allowed");
         $statuses = Status::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $categories = Category::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
         $assigned_to_users = User::whereHas('roles', function ($query) {
@@ -319,26 +325,40 @@ class LeadsController extends Controller
         }
         return redirect()->route('dealer.leads.index');
     }
-
-    public function show(Lead $lead)
+    public function display($leadid)
     {
-        $lead->load('status', 'category', 'assigned_to_user', 'comments');
+        $lead = Lead::where('id', $leadid)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+        $lead->load('status', 'category');
 
         $questions = json_decode($lead->questions, 1);
         $defindQuestions = $lead->category_id == 2 ? config('product.commercial_questions') : config('product.residential_questions');
 
-        return view('dealer.leads.show', compact('lead', 'questions', 'defindQuestions'));
+        return view('dealer.leads.display', compact('lead', 'questions', 'defindQuestions'));
+    }
+    public function show($leadid)
+    {
+        $lead = Lead::where('id', $leadid)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+        $lead->load('status', 'category', 'comments', 'survey');
+
+        $questions = json_decode($lead->questions, 1);
+        $defindQuestions = $lead->category_id == 2 ? config('product.commercial_questions') : config('product.residential_questions');
+
+        $agents = User::where('parent_id', auth()->user()->id)->whereHas("roles", function ($q) {
+            $q->where("title", "Agent");
+        })->pluck('name', 'id');
+
+        return view('dealer.leads.show', compact('lead', 'leadid', 'questions', 'defindQuestions', 'agents'));
     }
 
     public function destroy(Lead $lead)
     {
-        $lead->delete();
+        // $lead->delete();
         return back();
     }
 
     public function massDestroy(MassDestroyLeadRequest $request)
     {
-        Lead::whereIn('id', request('ids'))->delete();
+        // Lead::whereIn('id', request('ids'))->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }
 
@@ -366,29 +386,112 @@ class LeadsController extends Controller
         $lead->assigned_to_user_id = auth()->user()->id;
         $lead->status_id = 3;
         $lead->save();
+        Notification::route('mail', [
+            env('ADMIN_EMAIL') => 'Vehya',
+        ])->notify(new AcceptLeadNotification($lead));
         return back();
     }
     public function reject($id)
     {
-        $lead = Lead::findOrFail($id);
-        //$lead->assigned_to_user_id = NULL;
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
         $lead->assigned_to_agent_id = NULL;
         $lead->status_id = 4;
         $lead->save();
+        Notification::route('mail', [
+            env('ADMIN_EMAIL') => 'Vehya',
+        ])->notify(new RejectLeadNotification($lead));
         return back();
     }
     public function activate($id)
     {
-        $lead = Lead::findOrFail($id);
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
         $lead->status_id = 5;
         $lead->save();
+        Notification::route('mail', [
+            env('ADMIN_EMAIL') => 'Vehya',
+        ])->notify(new LeadActivateNotification($lead));
         return back();
     }
     public function completelead($id)
     {
-        $lead = Lead::findOrFail($id);
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
         $lead->status_id = 6;
         $lead->save();
+        Notification::route('mail', [
+            env('ADMIN_EMAIL') => 'Vehya',
+        ])->notify(new LeadCompleteNotification($lead));
         return back();
+    }
+
+    public function assignagent(Request $request)
+    {
+        try {
+            $lead = Lead::where('id', $request->leadid)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+            if (!empty($request->agentid)) {
+                $agent = User::where('id', $request->agentid)->where('parent_id', auth()->user()->id)->whereHas("roles", function ($q) {
+                    $q->where("title", "Agent");
+                })->firstOrFail();
+                $lead->assigned_to_agent_id = $agent->id;
+                $lead->save();
+                Notification::route('mail', [
+                    $agent->email => 'Vehya',
+                ])->notify(new AssignToAgentLeadNotification($lead));
+            } else {
+                $lead->assigned_to_agent_id = null;
+                $lead->save();
+            }
+            return ["status" => true, "message" => "Your request processed successfully."];
+        } catch (Exception $e) {
+            return ["status" => false, "message" => $e->getMessage()];
+        }
+    }
+
+    public function permitupdate(Request $request, $id)
+    {
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+        $survey = LeadSurvey::where('lead_id', $id)->firstOrNew();
+        $survey->lead_id = $id;
+        $survey->customer_name = $request->customer_name;
+        $survey->address = $request->address;
+        $survey->permit_no = $request->permit_no;
+        $survey->inspection_date = $request->inspection_date;
+        $survey->inspection_completed = $request->inspection_completed;
+        $survey->inspector_name = $request->inspector_name;
+        $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
+    }
+
+    public function surveyupdate(Request $request, $id)
+    {
+
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+        $survey = LeadSurvey::where('lead_id', $id)->firstOrNew();
+        $survey->lead_id = $id;
+        $survey->charger_completion_of_installation = $request->charger_completion_of_installation;
+        $survey->how_use_charger = $request->how_use_charger;
+        $survey->demonstrate_charger = $request->demonstrate_charger;
+        $survey->interested_service_contract = $request->interested_service_contract;
+        $survey->surveyed_name = $request->surveyed_name;
+        $survey->phone = $request->phone;
+        $survey->email = $request->email;
+        $survey->detail = $request->detail;
+        if ($request->file('charger_installed_image')) {
+            $fileName = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
+            $filePath = $request->file('charger_installed_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->charger_installed_image = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
+        }
+        if ($request->file('electrical_panel_image')) {
+            $fileName = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
+            $filePath = $request->file('electrical_panel_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->electrical_panel_image = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
+        }
+        if ($request->file('exterior_property_image')) {
+            $fileName = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
+            $filePath = $request->file('exterior_property_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->exterior_property_image = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
+        }
+
+        $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
     }
 }

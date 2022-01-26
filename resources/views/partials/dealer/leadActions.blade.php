@@ -13,6 +13,11 @@
     {{ trans('global.view') }}
 </a>
 @endif
+@if(isset($displayGate) && $displayGate)
+<a class="btn btn-xs btn-primary" href="{{ route('dealer.' . $crudRoutePart . '.display', $row->id) }}">
+    {{ trans('global.view') }}
+</a>
+@endif
 @if(isset($activeGate) && $activeGate)
 <a class="btn btn-xs btn-info" href="{{ route('dealer.' . $crudRoutePart . '.activate', $row->id) }}">
     Active

@@ -43,7 +43,15 @@ class Lead extends Model implements HasMedia
         'assigned_to_agent_id',
         'ev_charger_type',
         "make",
-        "model"
+        "model",
+        'expected_install_days',
+        'industry',
+        'quote',
+        'installation_date',
+        'online_assessment_completed',
+        'inspection_date',
+        'inspection_status',
+        'inspection_faild_reason',
     ];
 
     public static function boot()
@@ -83,6 +91,11 @@ class Lead extends Model implements HasMedia
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
+    }
+
+    public function survey()
+    {
+        return $this->hasOne(LeadSurvey::class, 'lead_id', 'id'); //return $this->belongsTo(LeadSurvey::class);
     }
 
     public function assigned_to_user()
