@@ -101,7 +101,7 @@ class HomeController extends Controller
             $userObj->save();
             return redirect()->route('dealer.thank-you');
         } catch (Exception $e) {
-            return redirect()->back();
+            return redirect()->back()->with('status', $e->getMessage());
         }
     }
 
