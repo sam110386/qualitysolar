@@ -284,7 +284,7 @@ class LeadsController extends Controller
         }
 
         $categories = Category::all();
-        return view('admin.leads.accepted', compact('categories'));
+        return view('admin.leads.rejected', compact('categories'));
     }
     public function active(Request $request)
     {
