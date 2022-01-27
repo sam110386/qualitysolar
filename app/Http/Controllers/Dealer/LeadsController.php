@@ -43,12 +43,14 @@ class LeadsController extends Controller
             $table->editColumn('actions', function ($row) {
                 $displayGate      = true;
                 $acceptGate = true;
+                $rejectGate = 1;
                 $crudRoutePart = 'leads';
 
                 return view('partials.dealer.leadActions', compact(
                     'displayGate',
                     'crudRoutePart',
                     'acceptGate',
+                    'rejectGate',
                     'row'
                 ));
             });
