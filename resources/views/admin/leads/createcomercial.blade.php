@@ -85,7 +85,7 @@
             if(!isset($question['type']))
             continue
             @endphp
-            <div class="form-group {{ $errors->has($question['name']) ? 'has-error' : '' }}">
+            <div class="form-group">
                 <label for="{{$key}}">{{ $question['title'] }}*</label>
                 @if($question['type']=='radio')
                 <div class="radio-group">
