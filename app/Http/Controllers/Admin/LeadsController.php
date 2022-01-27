@@ -497,7 +497,7 @@ class LeadsController extends Controller
     public  function saveresidential(Request $request)
     {
         if (!empty($request->id)) {
-            $lead = Lead::where('id', $request->id)->firstOrNew();
+            $lead = $leadObj = Lead::where('id', $request->id)->firstOrNew();
         } else {
             $lead = new Lead();
         }
@@ -515,7 +515,7 @@ class LeadsController extends Controller
         $lead->installation_date = $request->installation_date;
         $lead->questions = json_encode($request->all());
         $lead->category_id = 1;
-        $lead->status_id = 1;
+        $lead->status_id = isset($leadObj) ? $leadObj->status_id : 1;
         $lead->save();
         return redirect('/admin/leads')->with("status", "Lead created successfully");
     }
@@ -523,7 +523,7 @@ class LeadsController extends Controller
     public function savecomercial(Request $request)
     {
         if (!empty($request->id)) {
-            $lead = Lead::where('id', $request->id)->firstOrNew();
+            $lead = $leadObj = Lead::where('id', $request->id)->firstOrNew();
         } else {
             $lead = new Lead();
         }
@@ -538,7 +538,7 @@ class LeadsController extends Controller
         $lead->installation_date = $request->installation_date;
         $lead->questions = json_encode($request->all());
         $lead->category_id = 2;
-        $lead->status_id = 1;
+        $lead->status_id = isset($leadObj) ? $leadObj->status_id : 1;
         $lead->save();
 
         return redirect('/admin/leads')->with("status", "Lead created successfully");
