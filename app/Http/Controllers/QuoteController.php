@@ -63,9 +63,7 @@ class QuoteController extends Controller
         $lead->status_id = 1;
         $lead->save();
 
-        Notification::route('mail', [
-            env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new ResidentialLeadNotification($request->all()));
+        Notification::route('mail', config('mail.adminto'))->notify(new ResidentialLeadNotification($request->all()));
         return redirect('/thankyou');
     }
 
@@ -86,9 +84,7 @@ class QuoteController extends Controller
         $lead->status_id = 1;
         $lead->save();
 
-        Notification::route('mail', [
-            env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new CommercialLeadNotification($request->all()));
+        Notification::route('mail', config('mail.adminto'))->notify(new CommercialLeadNotification($request->all()));
         return redirect('/thankyou');
     }
 
