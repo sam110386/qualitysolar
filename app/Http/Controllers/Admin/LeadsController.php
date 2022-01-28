@@ -668,6 +668,7 @@ class LeadsController extends Controller
                 })->firstOrFail();
                 $lead->status_id = 2;
                 $lead->assigned_to_user_id = $vendor->id;
+                $lead->assigned_to_agent_id = NULL;
                 $lead->save();
                 Notification::route('mail', [
                     $vendor->email => 'Vehya',
