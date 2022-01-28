@@ -1,6 +1,14 @@
 <?php
 
-Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:api']], function () {
+use App\Http\Controllers\Api\V1\Agent\LoginApiController;
+
+Route::group(
+    ['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Agent'],
+    function () {
+        Route::post('login', 'LoginApiController@login')->name('login');
+    }
+);
+Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Agent', 'middleware' => ['auth:api']], function () {
     // Permissions
     Route::apiResource('permissions', 'PermissionsApiController');
 

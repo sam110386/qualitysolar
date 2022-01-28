@@ -21,6 +21,7 @@ use App\Notifications\AcceptLeadNotification;
 use App\Notifications\RejectLeadNotification;
 use App\Notifications\LeadActivateNotification;
 use App\Notifications\LeadCompleteNotification;
+use App\Notifications\InspectionSaveNotification;
 use Exception;
 use Illuminate\Support\Facades\Notification;
 use App\Models\LeadSurvey;
@@ -95,11 +96,11 @@ class LeadsController extends Controller
 
         return view('dealer.leads.index', compact('statuses', 'categories'));
     }
-    public function accepted(Request $request)
+    public function rejected(Request $request)
     {
 
         if ($request->ajax()) {
-            $query = Lead::where('assigned_to_user_id', auth()->user()->id)->where('status_id', 3)->with(['status', 'category', 'assigned_to_agent'])
+            $query = Lead::where('assigned_to_user_id', auth()->user()->id)->where('status_id', 4)->with(['status', 'category', 'assigned_to_agent'])
                 ->filterLeads($request)
                 ->select(sprintf('%s.*', (new Lead)->table))->orderBy('id', 'DESC');
             $table = Datatables::of($query);
@@ -108,15 +109,15 @@ class LeadsController extends Controller
             $table->addColumn('actions', '&nbsp;');
 
             $table->editColumn('actions', function ($row) {
-                $displayGate      = true;
-                $rejectGate = 1;
-                $activeGate = 1;
+                $displayGate  = true;
+                $acceptGate = 1;
+                $activeGate = false;
                 $crudRoutePart = 'leads';
 
                 return view('partials.dealer.leadActions', compact(
                     'displayGate',
                     'crudRoutePart',
-                    'rejectGate',
+                    'acceptGate',
                     'activeGate',
                     'row'
                 ));
@@ -158,7 +159,7 @@ class LeadsController extends Controller
         $statuses = Status::all();
         $categories = Category::all();
 
-        return view('dealer.leads.accepted', compact('statuses', 'categories'));
+        return view('dealer.leads.rejected', compact('statuses', 'categories'));
     }
     public function active(Request $request)
     {
@@ -386,11 +387,12 @@ class LeadsController extends Controller
     {
         $lead = Lead::findOrFail($id);
         $lead->assigned_to_user_id = auth()->user()->id;
-        $lead->status_id = 3;
+        $lead->status_id = 5;
         $lead->save();
-        Notification::route('mail', [
+        /*Notification::route('mail', [
             env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new AcceptLeadNotification($lead));
+        ])->notify(new AcceptLeadNotification($lead));*/
+        Notification::route('mail', config('email.adminto'))->notify(new LeadActivateNotification($lead));
         return back();
     }
     public function reject($id)
@@ -399,9 +401,7 @@ class LeadsController extends Controller
         $lead->assigned_to_agent_id = NULL;
         $lead->status_id = 4;
         $lead->save();
-        Notification::route('mail', [
-            env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new RejectLeadNotification($lead));
+        Notification::route('mail', config('email.adminto'))->notify(new RejectLeadNotification($lead));
         return back();
     }
     public function activate($id)
@@ -409,9 +409,7 @@ class LeadsController extends Controller
         $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
         $lead->status_id = 5;
         $lead->save();
-        Notification::route('mail', [
-            env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new LeadActivateNotification($lead));
+        Notification::route('mail', config('email.adminto'))->notify(new LeadActivateNotification($lead));
         return back();
     }
     public function completelead($id)
@@ -419,9 +417,7 @@ class LeadsController extends Controller
         $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
         $lead->status_id = 6;
         $lead->save();
-        Notification::route('mail', [
-            env('ADMIN_EMAIL') => 'Vehya',
-        ])->notify(new LeadCompleteNotification($lead));
+        Notification::route('mail', config('email.adminto'))->notify(new LeadCompleteNotification($lead));
         return back();
     }
 
@@ -436,7 +432,8 @@ class LeadsController extends Controller
                 $lead->assigned_to_agent_id = $agent->id;
                 $lead->save();
                 Notification::route('mail', [
-                    $agent->email => 'Vehya',
+                    'address' => $agent->email,
+                    'name' => $agent->name
                 ])->notify(new AssignToAgentLeadNotification($lead));
             } else {
                 $lead->assigned_to_agent_id = null;
@@ -459,6 +456,11 @@ class LeadsController extends Controller
         $survey->inspection_date = $request->inspection_date;
         $survey->inspection_completed = $request->inspection_completed;
         $survey->inspector_name = $request->inspector_name;
+        if ($request->file('permit_image')) {
+            $fileName = time() . '_' . $request->file('permit_image')->getClientOriginalName();
+            $filePath = $request->file('permit_image')->storeAs('uploads/leads', $fileName, 'public');
+            $survey->permit_image = time() . '_' . $request->file('permit_image')->getClientOriginalName();
+        }
         $survey->save();
         return redirect()->back()->with('status', 'Updated successfully');
     }
@@ -494,6 +496,17 @@ class LeadsController extends Controller
         }
 
         $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
+    }
+    public function inspectionsave(Request $request, $id)
+    {
+        $lead = Lead::where('id', $id)->where('assigned_to_user_id', auth()->user()->id)->firstOrFail();
+        $lead->inspection_status = $request->inspection_status;
+        $lead->inspection_date = $request->inspection_date;
+        $lead->inspection_faild_reason = $request->inspection_faild_reason;
+        $lead->status_id = 6;
+        $lead->save();
+        Notification::route('mail', config('mail.adminto'))->notify(new InspectionSaveNotification($lead));
         return redirect()->back()->with('status', 'Updated successfully');
     }
 }

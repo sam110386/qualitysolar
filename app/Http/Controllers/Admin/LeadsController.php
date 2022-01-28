@@ -670,9 +670,13 @@ class LeadsController extends Controller
                 $lead->assigned_to_user_id = $vendor->id;
                 $lead->assigned_to_agent_id = NULL;
                 $lead->save();
-                Notification::route('mail', [
-                    $vendor->email => 'Vehya',
-                ])->notify(new AssignToVendorLeadNotification($lead));
+                Notification::route(
+                    'mail',
+                    [
+                        'address' => $vendor->email,
+                        'name' => $vendor->name
+                    ]
+                )->notify(new AssignToVendorLeadNotification($lead));
             } else {
                 $lead->status_id = 1;
                 $lead->assigned_to_user_id = null;
@@ -739,6 +743,17 @@ class LeadsController extends Controller
         }
 
         $survey->save();
+        return redirect()->back()->with('status', 'Updated successfully');
+    }
+
+    public function inspectionsave(Request $request, $id)
+    {
+        $lead = Lead::where('id', $id)->firstOrFail();
+        $lead->inspection_status = $request->inspection_status;
+        $lead->inspection_date = $request->inspection_date;
+        $lead->inspection_faild_reason = $request->inspection_faild_reason;
+        $lead->status_id = 6;
+        $lead->save();
         return redirect()->back()->with('status', 'Updated successfully');
     }
 }

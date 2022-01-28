@@ -75,6 +75,61 @@
                         </tr>
                     </tbody>
                 </table>
+                <!-- Save inspection status start here -->
+                @if($lead->status_id>4)
+                <form action="{{ route("admin.leads.inspectionsave", [$lead->id]) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('POST')
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th colspan="2">Inspection Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>
+                                    Inspection Status*
+                                </th>
+                                <td>
+                                    <select name="inspection_status" id="inspection_status required" class="form-control w-100 ">
+                                        <option value="0" {{ (isset($lead) && $lead->inspection_status==0) ?'selected' : '' }}>No</option>
+                                        <option value="1" {{ (isset($lead) && $lead->inspection_status==1) ?'selected' : '' }}>Yes</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>
+                                    Inspection Date*
+                                </th>
+                                <td>
+                                    <input type="text" id="inspection_date" name="inspection_date" class="form-control required date" value="{{ old('inspection_date', isset($lead->inspection_date) ? $lead->inspection_date : '') }}">
+                                    @if($errors->has('inspection_date'))
+                                    <em class="invalid-feedback">
+                                        {{ $errors->first('inspection_date') }}
+                                    </em>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="form-group">
+                                    <textarea id="inspection_faild_reason" name="inspection_faild_reason" class="form-control " placeholder="Reason for Failed Inspection">{{ old('inspection_faild_reason', isset($lead) ? $lead->inspection_faild_reason : '') }}</textarea>
+                                    @if($errors->has('inspection_faild_reason'))
+                                    <em class="invalid-feedback">
+                                        {{ $errors->first('inspection_faild_reason') }}
+                                    </em>
+                                    @endif
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+                @endif
             </div>
             <div class="col-sm-6">
                 <table class="table table-bordered table-striped">

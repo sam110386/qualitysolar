@@ -31,11 +31,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route("dealer.leads.accepted") }}" class="nav-link {{  request()->is('dealer/leads/accepted') ? 'active' : '' }}">
+                        <a href="{{ route("dealer.leads.rejected") }}" class="nav-link {{  request()->is('dealer/leads/rejected') ? 'active' : '' }}">
                             <i class="fa-fw fas fa-question-circle nav-icon">
 
                             </i>
-                            Accepted
+                            Rejected
                         </a>
                     </li>
                     <li class="nav-item">

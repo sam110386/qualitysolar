@@ -47,8 +47,9 @@ class AgentsController extends Controller
         return redirect()->route('dealer.agents.index');
     }
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::where('parent_id', auth()->user()->id)->where('id', $id)->firstOrFail();
         return view('dealer.agents.edit', compact('user'));
     }
 
@@ -67,7 +68,7 @@ class AgentsController extends Controller
         $dataToSave['email_verified_at'] = date('Y-m-d H:i:s');
         $userObj = User::FindOrFail($id);
         $userObj->save();
-        return redirect()->route('admin.users.index');
+        return redirect()->route('dealer.agents.index');
     }
 
     public function show(User $user)
@@ -87,5 +88,13 @@ class AgentsController extends Controller
         User::where('parent_id', auth()->user()->id)->whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function status(User $user, $status)
+    {
+
+        $user->is_approved = ($status ? 0 : 1);
+        $user->save();
+        return back();
     }
 }

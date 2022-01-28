@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\V1\Admin;
+namespace App\Http\Controllers\Api\V1\Agent;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;

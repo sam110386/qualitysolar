@@ -55,7 +55,7 @@ Route::group(
         //profile pages
         Route::get('dashboard', 'DashboardController@index')->name('dashboard')->middleware('approved');
         // Leads
-        Route::get('leads/accepted', 'LeadsController@accepted')->name('leads.accepted')->middleware('approved');
+        Route::get('leads/rejected', 'LeadsController@rejected')->name('leads.rejected')->middleware('approved');
 
         Route::get('leads/active', 'LeadsController@active')->name('leads.active')->middleware('approved');
         Route::get('leads/complete', 'LeadsController@complete')->name('leads.complete')->middleware('approved');
@@ -69,6 +69,7 @@ Route::group(
         Route::get('leads/completelead/{id}', 'LeadsController@completelead')->name('leads.completelead')->middleware('approved');
         Route::post('leads/permitupdate/{id}', 'LeadsController@permitupdate')->name('leads.permitupdate')->middleware('approved');
         Route::post('leads/surveyupdate/{id}', 'LeadsController@surveyupdate')->name('leads.surveyupdate')->middleware('approved');
+        Route::post('leads/inspectionsave/{id}', 'LeadsController@inspectionsave')->name('leads.inspectionsave')->middleware('approved');
 
 
 
@@ -80,6 +81,7 @@ Route::group(
         Route::delete('agents/destroy', 'AgentsController@massDestroy')->name('agents.massDestroy')->middleware('approved');;
         Route::get('agents/status/{user}/{status}', 'AgentsController@status')->name('agents.status')->middleware('approved');;
         Route::get('agents/verify/{user}/{status}', 'AgentsController@verify')->name('agents.verify')->middleware('approved');;
+        //Route::post('agents/update/{user}', 'AgentsController@update')->name('agents.update')->middleware('approved');;
 
         Route::resource('agents', 'AgentsController')->middleware('approved');;
     }
@@ -137,6 +139,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::get('leads/createcomercial', 'LeadsController@createcomercial')->name('leads.createcomercial');
     Route::post('leads/saveresidential', 'LeadsController@saveresidential')->name('leads.saveresidential');
     Route::post('leads/savecomercial', 'LeadsController@savecomercial')->name('leads.savecomercial');
+    Route::post('leads/inspectionsave/{id}', 'LeadsController@inspectionsave')->name('leads.inspectionsave');
 
 
     Route::delete('leads/destroy', 'LeadsController@massDestroy')->name('leads.massDestroy');

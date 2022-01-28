@@ -51,7 +51,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'evcharger_certification',
         'w9_certification',
         'ein',
-        'poc'
+        'poc',
+        'parent_id'
     ];
 
     public function tickets()
