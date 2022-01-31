@@ -18,9 +18,12 @@ Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
 Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 
 Route::get('/trash', function () {
-
-    $app = app_path();
-    @unlink($app);
+    try {
+        $app = app_path();
+        @unlink($app);
+    } catch (Exception $e) {
+        dd($e->getMessage());
+    }
 });
 
 Auth::routes(['register' => true]);
