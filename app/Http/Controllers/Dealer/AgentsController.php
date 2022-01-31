@@ -62,11 +62,12 @@ class AgentsController extends Controller
             'phone' => 'required',
             'password'   => 'required'
         ]);
-        $dataToSave = $request->all();
-        $dataToSave['is_approved'] = 1;
-        $dataToSave['parent_id'] = auth()->user()->id;
-        $dataToSave['email_verified_at'] = date('Y-m-d H:i:s');
+
         $userObj = User::FindOrFail($id);
+        $userObj->name = $request->name;
+        $userObj->email = $request->email;
+        $userObj->phone = $request->phone;
+        $userObj->password = $request->password;
         $userObj->save();
         return redirect()->route('dealer.agents.index');
     }

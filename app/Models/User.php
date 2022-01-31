@@ -101,4 +101,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->is_approved;
     }
+
+    public function isAgent()
+    {
+        return $this->roles->contains(3);
+    }
 }

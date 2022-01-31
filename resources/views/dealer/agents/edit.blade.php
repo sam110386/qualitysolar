@@ -55,16 +55,7 @@
                     {{ trans('cruds.user.fields.password_helper') }}
                 </p>
             </div>
-            <div class="form-group {{ $errors->has('description') ? 'has-error' : '' }}">
-                <label for="description">{{ __('About Me*') }}</label>
-                <textarea id="description" class="form-control @error('description') is-invalid @enderror" rows="2" cols="40" name="description" required>{!! old('description', isset($user) ? trim($user->description) : '') !!}</textarea>
 
-                @if($errors->has('description'))
-                <em class="invalid-feedback">
-                    {{ $errors->first('description') }}
-                </em>
-                @endif
-            </div>
 
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">

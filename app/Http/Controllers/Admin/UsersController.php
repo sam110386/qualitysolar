@@ -168,6 +168,9 @@ class UsersController extends Controller
 
         $user->is_approved = ($status ? 0 : 1);
         $user->save();
+        //update agents
+        User::where('parent_id', $user->id)
+            ->update(['is_approved' => ($status ? 0 : 1)]);
         return back();
     }
     public function verify(User $user, $verify)

@@ -26,8 +26,17 @@ class LoginApiController extends BaseController
 
         if ($this->attemptLogin($request)) {
             $user = auth()->user();
+            if (!$user->userIsApproved()) {
+                return $this->sendError('Unauthorised.', ['error' => 'Sorry, your account is not approved']);
+            }
+            if (!$user->isAgent()) {
+                return $this->sendError('Unauthorised.', ['error' => 'Sorry, you are not authorize to access this action']);
+            }
+
             $success['token'] =  $user->createToken('Vehya')->accessToken;
             $success['name'] =  $user->name;
+            $success['email'] =  $user->email;
+            $success['phone'] =  $user->phone;
             return $this->sendResponse($success, 'User login successfully.');
         } else {
             return $this->sendError('Unauthorised.', ['error' => 'Unauthorised']);

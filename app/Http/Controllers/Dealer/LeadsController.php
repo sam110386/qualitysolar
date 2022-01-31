@@ -432,8 +432,7 @@ class LeadsController extends Controller
                 $lead->assigned_to_agent_id = $agent->id;
                 $lead->save();
                 Notification::route('mail', [
-                    'address' => $agent->email,
-                    'name' => $agent->name
+                    $agent->email => $agent->name
                 ])->notify(new AssignToAgentLeadNotification($lead));
             } else {
                 $lead->assigned_to_agent_id = null;
@@ -482,17 +481,17 @@ class LeadsController extends Controller
         if ($request->file('charger_installed_image')) {
             $fileName = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
             $filePath = $request->file('charger_installed_image')->storeAs('uploads/leads', $fileName, 'public');
-            $survey->charger_installed_image = time() . '_' . $request->file('charger_installed_image')->getClientOriginalName();
+            $survey->charger_installed_image = $fileName;
         }
         if ($request->file('electrical_panel_image')) {
             $fileName = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
             $filePath = $request->file('electrical_panel_image')->storeAs('uploads/leads', $fileName, 'public');
-            $survey->electrical_panel_image = time() . '_' . $request->file('electrical_panel_image')->getClientOriginalName();
+            $survey->electrical_panel_image = $fileName;
         }
         if ($request->file('exterior_property_image')) {
             $fileName = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
             $filePath = $request->file('exterior_property_image')->storeAs('uploads/leads', $fileName, 'public');
-            $survey->exterior_property_image = time() . '_' . $request->file('exterior_property_image')->getClientOriginalName();
+            $survey->exterior_property_image = $fileName;
         }
 
         $survey->save();
