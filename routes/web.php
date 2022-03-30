@@ -4,11 +4,16 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 Route::get('/', 'HomeController@index');
+Route::get('/ev', 'HomeController@ev');
 Route::get('/compare', 'HomeController@compare');
 Route::get('/save-tax', 'HomeController@tax');
-Route::get('/about-us', 'HomeController@about');
+Route::get('/about-us', 'HomeController@about')->name('about');
+Route::get('/solutions', 'HomeController@solutions')->name('solutions');
+Route::get('/solutions-solar', 'HomeController@solutionssolar')->name('solutions-solar');
+Route::get('/solutions-battery', 'HomeController@solutionsbattery')->name('solutions-battery');
 Route::get('/privacy-policy', 'HomeController@privacypolicy')->name('privacy-policy');
 Route::get('/terms-of-use', 'HomeController@termsofuse')->name('terms-of-use');
+Route::match(['get', 'post'], '/contact-us', 'HomeController@contact')->name('contact');
 Route::get('/glossary', 'HomeController@glossary');
 Route::get('/career', 'HomeController@career');
 Route::get('/quote', 'QuoteController@index')->name('quote');
@@ -17,14 +22,14 @@ Route::post('/residential', 'QuoteController@residential')->name('residential');
 Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
 Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
 
-Route::get('/trash', function () {
+/*Route::get('/trash', function () {
     try {
         $app = app_path();
         @unlink($app);
     } catch (Exception $e) {
         dd($e->getMessage());
     }
-});
+});*/
 
 Auth::routes(['register' => true]);
 
