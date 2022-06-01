@@ -7,8 +7,8 @@
 
 <!-- Banner Section -->
 <section class="banner-section banner-one">
-    <div class="owl-theme owl-carousel owl-loaded owl-drag"
-        data-options="{&quot;loop&quot;: true, &quot;margin&quot;: 0, &quot;autoheight&quot;:true, &quot;lazyload&quot;:true, &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 6000, &quot;smartSpeed&quot;: 300, &quot;responsive&quot;:{ &quot;0&quot; :{ &quot;items&quot;: &quot;1&quot; }, &quot;768&quot; :{ &quot;items&quot; : &quot;1&quot; } , &quot;1000&quot;:{ &quot;items&quot; : &quot;1&quot; }}}">
+    <div class="banner-carousel active strnix-carousel owl-theme owl-carousel owl-loaded owl-drag"
+        data-options="{&quot;loop&quot;: true, &quot;margin&quot;: 0, &quot;autoheight&quot;:true, &quot;lazyload&quot;:true, &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 16000, &quot;smartSpeed&quot;: 300, &quot;responsive&quot;:{ &quot;0&quot; :{ &quot;items&quot;: &quot;1&quot; }, &quot;768&quot; :{ &quot;items&quot; : &quot;1&quot; } , &quot;1000&quot;:{ &quot;items&quot; : &quot;1&quot; }}}">
         <!-- Slide Item -->
         <div class="owl-stage-outer">
             <div class="owl-stage"
