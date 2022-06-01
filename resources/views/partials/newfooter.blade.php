@@ -80,7 +80,7 @@
                                 <div class="info-text">102 Taily End Rd, NY</div>
                             </div>
                             <!--Info Block-->
-                            <div class="info-block">
+                            <!--div class="info-block">
                                 <div class="icon-box">
                                     <span class="icon">
                                         <span class="fa fa-phone fa-2x phone-icon-transform"></span>
@@ -91,7 +91,7 @@
                                 <div class="info-text">
                                     <a href="tel:(222)-303-4500">(222) 303 4500</a>
                                 </div>
-                            </div>
+                            </div -->
                             <!--Info Block-->
                             <div class="info-block">
                                 <div class="icon-box">
@@ -101,23 +101,28 @@
                                 </div>
                                 <strong>Send Email</strong>
                                 <div class="info-text">
-                                    <a href="mailto:info@domain.com">info@domain.com</a>
+                                    <a href="mailto:info@qualitysolar.net">info@qualitysolar.net</a>
                                 </div>
                             </div>
                             <div class="info-block">
-                                <a id="bbblink" class="" href="https://#bbbseal" title="Traffic File Complaint, Clothing, Dallas, TX" style="display: block;position: relative;overflow: hidden; width: 0px; height: px; margin: 0px; padding: 0px;"><img style="padding: 0px; border: none;" id="bbblinkimg" src="https://seal-dallas.bbb.org/logo//-.png" width="" height="" alt="Traffic File Complaint, Clothing, Dallas, TX" /></a>
+                                <a id="bbblink" class="" href="https://#bbbseal"
+                                    title="Traffic File Complaint, Clothing, Dallas, TX"
+                                    style="display: block;position: relative;overflow: hidden; width: 0px; height: 0px; margin: 0px; padding: 0px;"><img
+                                        style="padding: 0px; border: none;" id="bbblinkimg"
+                                        src="https://seal-dallas.bbb.org/logo//-.png" width="" height=""
+                                        alt="Traffic File Complaint, Clothing, Dallas, TX" /></a>
                                 <script type="text/javascript">
-                                    var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://");
-                                    (function() {
-                                        var s = document.createElement('script');
-                                        s.src = bbbprotocol + 'seal-dallas.bbb.org' + unescape('%2Flogo%2F-.js');
-                                        s.type = 'text/javascript';
-                                        s.async = true;
-                                        var st = document.getElementsByTagName('script');
-                                        st = st[st.length - 1];
-                                        var pt = st.parentNode;
-                                        pt.insertBefore(s, pt.nextSibling);
-                                    })();
+                                var bbbprotocol = (("https:" == document.location.protocol) ? "https://" : "http://");
+                                (function() {
+                                    var s = document.createElement('script');
+                                    s.src = bbbprotocol + 'seal-dallas.bbb.org' + unescape('%2Flogo%2F-.js');
+                                    s.type = 'text/javascript';
+                                    s.async = true;
+                                    var st = document.getElementsByTagName('script');
+                                    st = st[st.length - 1];
+                                    var pt = st.parentNode;
+                                    pt.insertBefore(s, pt.nextSibling);
+                                })();
                                 </script>
 
                             </div>
@@ -174,22 +179,28 @@
                         <div class="widget-content">
                             <div class="images">
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/gallery-thumb-1.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-1.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/gallery-thumb-1.jpg"
+                                        data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-1.jpg" alt=""></a>
                                 </figure>
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/2.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-2.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/2.jpg" data-fancybox="gallery"><img
+                                            src="/QualitySolar/gallery-thumb-2.jpg" alt=""></a>
                                 </figure>
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/gallery/3.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-3.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/gallery/3.jpg"
+                                        data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-3.jpg" alt=""></a>
                                 </figure>
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/4.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-4.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/4.jpg" data-fancybox="gallery"><img
+                                            src="/QualitySolar/gallery-thumb-4.jpg" alt=""></a>
                                 </figure>
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/5.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-5.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/5.jpg" data-fancybox="gallery"><img
+                                            src="/QualitySolar/gallery-thumb-5.jpg" alt=""></a>
                                 </figure>
                                 <figure class="image">
-                                    <a class="lightbox-image" href="/QualitySolar/6.jpg" data-fancybox="gallery"><img src="/QualitySolar/gallery-thumb-6.jpg" alt=""></a>
+                                    <a class="lightbox-image" href="/QualitySolar/6.jpg" data-fancybox="gallery"><img
+                                            src="/QualitySolar/gallery-thumb-6.jpg" alt=""></a>
                                 </figure>
                             </div>
                         </div>
@@ -206,7 +217,8 @@
 
             <div class="inner clearfix">
                 <!--Scroll to top-->
-                <div class="scroll-top-footer scroll-to-target" data-target="html"><span class="flaticon-arrows"></span></div>
+                <div class="scroll-top-footer scroll-to-target" data-target="html"><span class="flaticon-arrows"></span>
+                </div>
                 <!--Copyright-->
                 <div class="copyright">(c) 2022 Quality Solar LLC. All rights reserved.</div>
                 <div class="footer-nav">

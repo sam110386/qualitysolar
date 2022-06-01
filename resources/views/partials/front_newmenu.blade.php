@@ -9,11 +9,12 @@
                  </div>
 
                  <div class="top-right clearfix">
-                     <div class="email mr-2">
+                     <!-- div class="email mr-2">
                          <a href="tel:(222)-303-4500"><span class="fa fa-phone phone-icon-transform"></span> (222) 303 4500</a>
-                     </div>
+                     </div -->
                      <div class="email">
-                         <a href="mailto:support@domain.com"><span class="fa fa-envelope"></span> support@domain.com</a>
+                         <a href="mailto:info@qulitysolar.net"><span class="fa fa-envelope"></span>
+                             info@qulitysolar.net</a>
                      </div>
                      <ul class="social-links clearfix">
                          <li><a href="#"><span class="fab fa-twitter"></span></a></li>
@@ -85,7 +86,7 @@
                                                  <div class="dropdown-btn"><span class="fa fa-angle-right"></span>
                                                  </div> */ ?>
                                              </li>
-                                             <li class=""><a href="/about-us">About Us</a>
+                                             <li class=""><a href="/about-us">Why Quality</a>
                                                  <?php /* <ul>
                                                      <li><a href="http://t.commonsupport.xyz/strnix/about.html">About
                                                              Us</a></li>
@@ -224,9 +225,12 @@
          <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
 
          <nav class="menu-box mCustomScrollbar _mCS_1 mCS_no_scrollbar">
-             <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: 559px;">
-                 <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position:relative; top:0; left:0;" dir="ltr">
-                     <div class="nav-logo"><a href="/"><img src="/QualitySolar/small-logo.png" alt="" title="" class="mCS_img_loaded"></a></div>
+             <div id="mCSB_1" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0"
+                 style="max-height: 559px;">
+                 <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y"
+                     style="position:relative; top:0; left:0;" dir="ltr">
+                     <div class="nav-logo"><a href="/"><img src="/QualitySolar/small-logo.png" alt="" title=""
+                                 class="mCS_img_loaded"></a></div>
                      <div class="menu-outer">
                          <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
                      </div>
@@ -241,9 +245,13 @@
                          </ul>
                      </div>
                  </div>
-                 <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical" style="display: none;">
+                 <div id="mCSB_1_scrollbar_vertical"
+                     class="mCSB_scrollTools mCSB_1_scrollbar mCS-light mCSB_scrollTools_vertical"
+                     style="display: none;">
                      <div class="mCSB_draggerContainer">
-                         <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; height: 0px; top: 0px;" oncontextmenu="return false;">
+                         <div id="mCSB_1_dragger_vertical" class="mCSB_dragger"
+                             style="position: absolute; min-height: 30px; height: 0px; top: 0px;"
+                             oncontextmenu="return false;">
                              <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
                          </div>
                          <div class="mCSB_draggerRail"></div>
