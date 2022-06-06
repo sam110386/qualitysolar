@@ -598,15 +598,14 @@
                                 data-wow-duration="2000ms"
                                 style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInRight;">
                                 <div class="title">
-                                    <h2><span>Solar Panels Installation</span></h2>
+                                    <h2><span>Solar For You</span></h2>
                                     <div class="sub-text">With most sunlight conversion efficiency</div>
                                 </div>
-                                <div class="text">Aenean volutpat, sem sit amet ullamcorper gravida, tortor arcu
-                                    molestie risus, ut bibendum urna enim nulla. Pellentesque porta arcu velit,
-                                    faucibus kodales dolor rhoncus sed. Curabitur lacinia massa vitae efficitur
-                                    porttitor. Sed scelerisque vestibulum lectus, at egestas erat varius.</div>
+                                <div class="text">We care about every home and every installation. No tow solar projects
+                                    will the same and we understand this. Which is why our installs will be custom built
+                                    for your house needs.</div>
                                 <div class="link-box">
-                                    <a href="http://t.commonsupport.xyz/strnix/#"><span class="txt">Get
+                                    <a href="{{route('contact')}}"><span class="txt">Get
                                             Started</span> <span class="icon flaticon-arrows-11"></span></a>
                                 </div>
                             </div>
@@ -635,12 +634,12 @@
                                     <h2><span>The Preventative Maintenance</span></h2>
                                     <div class="sub-text">inspection to prevent emergency repair</div>
                                 </div>
-                                <div class="text">Aenean volutpat, sem sit amet ullamcorper gravida, tortor arcu
-                                    molestie risus, ut bibendum urna enim nulla. Pellentesque porta arcu velit,
-                                    faucibus kodales dolor rhoncus sed. Curabitur lacinia massa vitae efficitur
-                                    porttitor. Sed scelerisque vestibulum lectus, at egestas erat varius.</div>
+                                <div class="text">Our team is dedicated to providing a stress free system. We ensure and
+                                    uphold our warranty and any manufacture warranty. We are not here to make you wait 6
+                                    months to get an answer back. Your problem is our problem, and we will go the extra
+                                    mile.</div>
                                 <div class="link-box">
-                                    <a href="http://t.commonsupport.xyz/strnix/#"><span class="txt">Get
+                                    <a href="{{route('contact')}}"><span class="txt">Get
                                             Started</span> <span class="icon flaticon-arrows-11"></span></a>
                                 </div>
                             </div>
@@ -667,15 +666,14 @@
                                 data-wow-duration="2000ms"
                                 style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInRight;">
                                 <div class="title">
-                                    <h2><span>Upgrade Or Replacement</span></h2>
+                                    <h2><span>Upgrade</span></h2>
                                     <div class="sub-text">get your panels in good shape regularly</div>
                                 </div>
-                                <div class="text">Aenean volutpat, sem sit amet ullamcorper gravida, tortor arcu
-                                    molestie risus, ut bibendum urna enim nulla. Pellentesque porta arcu velit,
-                                    faucibus kodales dolor rhoncus sed. Curabitur lacinia massa vitae efficitur
-                                    porttitor. Sed scelerisque vestibulum lectus, at egestas erat varius.</div>
+                                <div class="text">If you already have solar and are struggling with an electricity bill,
+                                    feel free to reach out. About 10% of our clients come from companies who have ripped
+                                    them off with a bad system. We are here to help.</div>
                                 <div class="link-box">
-                                    <a href="http://t.commonsupport.xyz/strnix/#"><span class="txt">Get
+                                    <a href="{{route('contact')}}"><span class="txt">Get
                                             Started</span> <span class="icon flaticon-arrows-11"></span></a>
                                 </div>
                             </div>
@@ -687,7 +685,7 @@
         </div>
     </div>
 </section>
-
+<?php /*
 <!--Recent Projects Section-->
 <section class="recent-projects">
     <div class="bg-pattern-layer"></div>
@@ -828,7 +826,8 @@
         </div>
     </div>
 </section>
-
+*/ ?>
+<?php /*
 <!--Reviews Section-->
 <section class="reviews-section">
     <div class="image-layer" style="background-image: url(/QualitySolar/bg-image-1.jpg);"></div>
@@ -1069,7 +1068,7 @@
     </div>
 
 </section>
-
+*/ ?>
 
 <!--Pricing Section-->
 <?php /*
@@ -1403,7 +1402,7 @@
     </div>
 </section>
 
-
+<?php /*
 <!--News Section-->
 <section class="news-section">
     <div class="auto-container">
@@ -1508,6 +1507,7 @@
 
     </div>
 </section>
+*/ ?>
 @endsection
 @section('scripts')
 @parent
