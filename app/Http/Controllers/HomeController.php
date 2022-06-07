@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Notifications\EnquiryNotification;
+use App\Notifications\ContactNotification;
+use App\Notifications\SubscribeNotification;
+use Illuminate\Support\Facades\Notification;
 
 class HomeController extends Controller
 {
@@ -63,22 +67,53 @@ class HomeController extends Controller
         if ($request->post()) {
 
             $request->validate([
-                'comment_text' => 'required'
+                'name' => 'required',
+                'email' => 'email|required',
+                'subject' => 'required',
+                'message' => 'required'
             ]);
-
-            /*$comment = $lead->comments()->create([
-                'author_name'   => $lead->author_name,
-                'author_email'  => $lead->author_email,
-                'comment_text'  => $request->comment_text
-            ]);*/
-
-            //$lead->sendCommentNotification($comment);
-
-            return redirect()->back()->withStatus('Thank you for contact us. One of representative will call you shortly');
+            $notification = new ContactNotification($request);
+            Notification::route('mail', env('ADMIN_EMAIL'))->notify($notification);
+            return redirect('thank-you')->withStatus('Thank you for contact us. One of representative will call you shortly');
         }
         return view('frontend.contact');
     }
+    public function enquiry(Request $request)
+    {
+        if ($request->post()) {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'email|required',
+                'phone' => 'required|min:10|max:16',
+                'regarding' => 'required'
+            ]);
 
+            $notification = new EnquiryNotification($request);
+            Notification::route('mail', env('ADMIN_EMAIL'))->notify($notification);
+            return redirect('thank-you')->withStatus('Thank you for contact us. One of representative will call you shortly');
+        }
+        return redirect()->back();
+    }
+
+    public function subscibe(Request $request)
+    {
+        if ($request->post()) {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'email|required'
+            ]);
+
+            $notification = new SubscribeNotification($request);
+            Notification::route('mail', env('ADMIN_EMAIL'))->notify($notification);
+            return redirect('thank-you')->withStatus('Thank you for contact us. One of representative will call you shortly');
+        }
+        return redirect()->back();
+    }
+
+    public  function thankyou()
+    {
+        return view('frontend.thankyou');
+    }
     /*public  function about()
     {
         return view('about');

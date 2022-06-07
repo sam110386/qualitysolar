@@ -14,6 +14,13 @@ Route::get('/solutions-battery', 'HomeController@solutionsbattery')->name('solut
 Route::get('/privacy-policy', 'HomeController@privacypolicy')->name('privacy-policy');
 Route::get('/terms-of-use', 'HomeController@termsofuse')->name('terms-of-use');
 Route::match(['get', 'post'], '/contact-us', 'HomeController@contact')->name('contact');
+
+Route::post('/enquiry', 'HomeController@enquiry')->name('enquiry');
+Route::post('/subscibe', 'HomeController@subscibe')->name('subscribe');
+Route::get('/thank-you', 'HomeController@thankyou')->name('thank-you');
+
+
+
 Route::get('/glossary', 'HomeController@glossary');
 Route::get('/career', 'HomeController@career');
 Route::get('/quote', 'QuoteController@index')->name('quote');
@@ -21,6 +28,9 @@ Route::match(['get', 'post'], '/quotestart', 'QuoteController@quotestart')->name
 Route::post('/residential', 'QuoteController@residential')->name('residential');
 Route::post('/commercial', 'QuoteController@commercial')->name('commercial');
 Route::get('/thankyou', 'QuoteController@thankyou')->name('thankyou');
+
+
+
 
 /*Route::get('/trash', function () {
     try {

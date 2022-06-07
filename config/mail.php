@@ -56,12 +56,12 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'help@vehya.com'),
-        'name' => env('MAIL_FROM_NAME', 'Vehya'),
+        'address' => env('MAIL_FROM_ADDRESS', 'help@QualitySolar.com'),
+        'name' => env('MAIL_FROM_NAME', 'QualitySolar'),
     ],
     'adminto' => [
-        'address' => env('ADMIN_EMAIL', 'help@vehya.com'),
-        'name' => env('MAIL_FROM_NAME', 'Vehya'),
+        'address' => env('ADMIN_EMAIL', 'help@QualitySolar.com'),
+        'name' => env('MAIL_FROM_NAME', 'QualitySolar'),
     ],
     /*
     |--------------------------------------------------------------------------
