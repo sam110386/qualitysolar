@@ -106,6 +106,16 @@
                                 </figure>
                             </div>
                         </div>
+                        <div class="owl-item">
+                            <div class="slide-item">
+                                <figure class="image-box" style="margin:68px 0px;">
+                                    <a href="#">
+                                        <img src="/QualitySolar/partner-logos/Logo-New-Era-White.png" alt="">
+                                    </a>
+                                </figure>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -133,7 +143,7 @@
                     </div>
                     <div class="text-content wow fadeInLeft animated" data-wow-delay="0ms" data-wow-duration="1000ms"
                         style="visibility: visible; animation-duration: 1000ms; animation-delay: 0ms; animation-name: fadeInLeft;">
-                        <p>The journey to cleaner energy is easy with Fluent Solar’s team, dedicated to providing world
+                        <p>The journey to cleaner energy is easy with Quality Solar’s team, dedicated to providing world
                             class service and top of the line products</p>
                     </div>
                     <div class="featured-list">
@@ -198,301 +208,109 @@
 
         <div class="program-carousel strnix-carousel owl-theme owl-carousel owl-loaded owl-drag"
             data-options="{&quot;loop&quot;: true, &quot;margin&quot;: 30, &quot;autoheight&quot;:true, &quot;lazyload&quot;:true, &quot;nav&quot;: true, &quot;dots&quot;: true, &quot;autoplay&quot;: true, &quot;autoplayTimeout&quot;: 6000, &quot;smartSpeed&quot;: 500, &quot;responsive&quot;:{ &quot;0&quot; :{ &quot;items&quot;: &quot;1&quot; }, &quot;600&quot; :{ &quot;items&quot; : &quot;2&quot; }, &quot;768&quot; :{ &quot;items&quot; : &quot;2&quot; }, &quot;1024&quot;:{ &quot;items&quot; : &quot;3&quot; }, &quot;1200&quot;:{ &quot;items&quot; : &quot;4&quot; }}}">
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
-
-            <!--Program Block-->
 
             <div class="owl-stage-outer">
-                <div class="owl-stage"
-                    style="transform: translate3d(-1200px, 0px, 0px); transition: all 0.5s ease 0s; width: 4800px;">
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
+                <div class="owl-stage">
+                    <div class="owl-item">
                         <div class="program-block">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-1.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                        Solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-2.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/commercial-service.html">Commercial
-                                        solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/solar-farm.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/thermal-service.html">Utility Scale Solar
-                                        Solution</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/residential_ev_charger.jpg" alt="">
+                                    <figure class="image"
+                                        style="background-image:url('/QualitySolar/program-image-1.jpg');">
                                     </figure>
                                     <div class="hover-box">
                                         <div class="hover-inner">
                                             <div class="content">
                                                 <div class="icon-box"><span class="flaticon-chimney"></span>
                                                 </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
+                                                <div class="text">Learn how to save money, and make the world a better
+                                                    place.</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                        EV Chargers</a></h3>
+                                <h3>
+                                    <a href="http://t.commonsupport.xyz/strnix/residential-service.html">
+                                        Residential Solutions</a>
+                                </h3>
                             </div>
                         </div>
                     </div>
-                    <div class="owl-item active" style="width: 270px; margin-right: 30px;">
+                    <div class="owl-item">
                         <div class="program-block">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-1.jpg" alt=""></figure>
+                                    <figure class="image"
+                                        style="background-image:url('/QualitySolar/program-image-2.jpg');">
+                                    </figure>
                                     <div class="hover-box">
                                         <div class="hover-inner">
                                             <div class="content">
                                                 <div class="icon-box"><span class="flaticon-chimney"></span>
                                                 </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
+                                                <div class="text">Take advantage of tax benefits provided and save money
+                                                    on for your business</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                        Solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-2.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/commercial-service.html">Commercial
-                                        solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item active" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-3.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/thermal-service.html">Solar
-                                        Thermal Systems</a></h3>
+                                <h3>
+                                    <a href="http://t.commonsupport.xyz/strnix/commercial-service.html">
+                                        Commercial solutions
+                                    </a>
+                                </h3>
                             </div>
                         </div>
                     </div>
 
-                    <div class="owl-item" style="width: 270px; margin-right: 30px;">
+                    <div class="owl-item">
                         <div class="program-block">
                             <div class="inner-box">
                                 <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-1.jpg" alt=""></figure>
+                                    <figure class="image"
+                                        style="background-image:url('/QualitySolar/residential_ev_charger.jpg');">
+                                    </figure>
                                     <div class="hover-box">
                                         <div class="hover-inner">
                                             <div class="content">
                                                 <div class="icon-box"><span class="flaticon-chimney"></span>
                                                 </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
+                                                <div class="text">Let us show you how easy it is to pair EV charger with
+                                                    your solar</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                        Solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-2.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/commercial-service.html">Commercial
-                                        solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-3.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/thermal-service.html">Solar
-                                        Thermal Systems</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-1.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                        Solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-2.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/commercial-service.html">Commercial
-                                        solutions</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="owl-item cloned" style="width: 270px; margin-right: 30px;">
-                        <div class="program-block">
-                            <div class="inner-box">
-                                <div class="image-box">
-                                    <figure class="image"><img src="/QualitySolar/program-image-3.jpg" alt=""></figure>
-                                    <div class="hover-box">
-                                        <div class="hover-inner">
-                                            <div class="content">
-                                                <div class="icon-box"><span class="flaticon-chimney"></span>
-                                                </div>
-                                                <div class="text">Integer lobortisy consequat consequat
-                                                    imperdiet sed nulla sed viverra ut lorem.</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h3><a href="http://t.commonsupport.xyz/strnix/thermal-service.html">Solar
-                                        Thermal Systems</a></h3>
+                                <h3>
+                                    <a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
+                                        EV Chargers</a>
+                                </h3>
                             </div>
                         </div>
                     </div>
 
+                    <div class="owl-item">
+                        <div class="program-block">
+                            <div class="inner-box">
+                                <div class="image-box">
+                                    <figure class="image"
+                                        style="background-image:url('/QualitySolar/Storz-Battery.jpeg');">
+                                    </figure>
+                                    <div class="hover-box">
+                                        <div class="hover-inner">
+                                            <div class="content">
+                                                <div class="icon-box"><span class="flaticon-chimney"></span>
+                                                </div>
+                                                <div class="text">Worried about power outages or want to disconnect from
+                                                    the grid completely? We can help</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3><a href="http://t.commonsupport.xyz/strnix/thermal-service.html">Batteries</a></h3>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -594,7 +412,7 @@
                     <div class="image-column col-lg-5 col-md-6 col-sm-12">
                         <div class="inner wow fadeInLeft animated" data-wow-delay="0ms" data-wow-duration="2000ms"
                             style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInLeft;">
-                            <div class="image"><img src="/QualitySolar/featured-image-3.jpg" alt=""></div>
+                            <div class="image"><img src="/QualitySolar/ground-solar-for-you.jpeg" alt=""></div>
                             <div class="icon-box"><span class="flaticon-power-7"></span></div>
                         </div>
                     </div>
@@ -628,7 +446,7 @@
                     <div class="image-column col-lg-5 col-md-6 col-sm-12">
                         <div class="inner wow fadeInRight animated" data-wow-delay="0ms" data-wow-duration="2000ms"
                             style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInRight;">
-                            <div class="image"><img src="/QualitySolar/featured-image-4.jpg" alt=""></div>
+                            <div class="image"><img src="/QualitySolar/roof-top.jpg" alt=""></div>
                             <div class="icon-box"><span class="flaticon-power-2"></span></div>
                         </div>
                     </div>
@@ -662,7 +480,7 @@
                     <div class="image-column col-lg-5 col-md-6 col-sm-12">
                         <div class="inner wow fadeInLeft animated" data-wow-delay="0ms" data-wow-duration="2000ms"
                             style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInLeft;">
-                            <div class="image"><img src="/QualitySolar/featured-image-5.jpg" alt=""></div>
+                            <div class="image"><img src="/QualitySolar/upgrade-install.jpg" alt=""></div>
                             <div class="icon-box"><span class="flaticon-energy-1"></span></div>
                         </div>
                     </div>

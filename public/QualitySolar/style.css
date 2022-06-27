@@ -4408,11 +4408,18 @@ img.lazy-image.loaded {
     display: block;
     overflow: hidden;
     margin-bottom: 20px;
+    width: 250px;
+    height: 250px;
 }
 
 .program-block .image-box .image {
     position: relative;
     display: block;
+    height: 100%;
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .program-block .image-box .image img {
