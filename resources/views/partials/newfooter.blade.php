@@ -26,7 +26,7 @@
                         <div class="logo">
                             <a href="/"><img src="/QualitySolar/logo.png" alt=""></a>
                         </div>
-                        <div class="social-links">
+                        <!--div class="social-links">
                             <ul class="clearfix">
                                 <li><a href="#"><span class="fab fa-twitter"></span></a></li>
                                 <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
@@ -34,7 +34,7 @@
                                 <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
                                 <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
                             </ul>
-                        </div>
+                        </div -->
                     </div>
                 </div>
                 <!--Service-->

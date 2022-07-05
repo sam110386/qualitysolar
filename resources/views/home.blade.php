@@ -360,11 +360,14 @@
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12">
                                     <div class="field-inner">
-                                        <button type="submit" class="theme-btn btn-style-one"><span
-                                                class="btn-title"><span class="btn-txt">Get More
-                                                    Info</span><span class="btn-icon"><span
-                                                        class="icon flaticon-arrows-11"></span>
-                                                </span></span></button>
+                                        <button type="submit" class="theme-btn btn-style-one">
+                                            <span class="btn-title">
+                                                <span class="btn-txt">Get More Info</span>
+                                                <span class="btn-icon">
+                                                    <span class="icon flaticon-arrows-11"></span>
+                                                </span>
+                                            </span>
+                                        </button>
                                     </div>
                                 </div>
                             </div>

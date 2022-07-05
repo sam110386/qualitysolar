@@ -11,7 +11,7 @@
     <div class="pattern-image-right"><img src="/QualitySolar/pattern-image-2.png" alt=""></div>
 
     <div class="auto-container">
-
+        <?php /*
         <div class="info-blocks">
             <div class="row clearfix">
                 <!--Info Block-->
@@ -54,7 +54,7 @@
                 </div>
             </div>
         </div>
-
+        */ ?>
         <div class="content-box clearfix wow fadeInUp animated" data-wow-delay="0ms" data-wow-duration="2000ms"
             style="visibility: visible; animation-duration: 2000ms; animation-delay: 0ms; animation-name: fadeInUp;">
             <div class="form-box clearfix">
@@ -109,14 +109,36 @@
                     </form>
                 </div>
             </div>
-            <div class="image-layer" style="background-image: url(/QualitySolar/bg-image-9.jpeg);">
-                <div class="info-box">
-                    <div class="subtitle">Call Us 24/7 For Support</div>
-                    <div class="phone">
-                        <span class="icon">
-                            <span class="fa fa-phone phone-icon-transform"></span>
-                        </span>
-                        <a href="tel:(222)-303-4500">(222) 303 4500</a>
+            <div class="image-layer">
+                <div class="info-blocks">
+                    <div class="row clearfix">
+
+                        <!--Info Block-->
+                        <div class="info-block col-sm-12 wow fadeInUp animated" data-wow-delay="300ms"
+                            data-wow-duration="2000ms"
+                            style="visibility: visible; animation-duration: 2000ms; animation-delay: 300ms; animation-name: fadeInUp;">
+                            <div class="inner">
+                                <div class="icon"><span class="fa fa-phone fa-2x phone-icon-transform"></span></div>
+                                <strong>Phone Inquiry</strong>
+                                <ul class="info">
+                                    <li><a href="tel:+1-(222)-303-4500">+1 (222) 303 4500</a></li>
+                                    <li><a href="tel:0800-12345">0800 12345</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Info Block-->
+                        <div class="info-block col-sm-12 wow fadeInUp animated" data-wow-delay="600ms"
+                            data-wow-duration="2000ms"
+                            style="visibility: visible; animation-duration: 2000ms; animation-delay: 600ms; animation-name: fadeInUp;">
+                            <div class="inner">
+                                <div class="icon"><span class="fa fa-envelope fa-2x "></span></div>
+                                <strong>Send Email</strong>
+                                <ul class="info">
+                                    <li><a href="mailto:info@qualitysolor.com">info@qualitysolor.com</a></li>
+                                    <li><a href="mailto:Support@qualitysolor.com">Support@qualitysolor.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

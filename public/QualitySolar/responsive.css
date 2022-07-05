@@ -787,7 +787,7 @@
 	}
 
 	.page-banner{
-		padding: 140px 0px 50px;
+		padding: 40px 0px 10px;
 	}
 
 	.history-section .carousel-box:after{
@@ -1156,6 +1156,9 @@
 	.service-block-four .inner-box{
 		text-align: center;
 	}
+	.header-style-one .upper-row .logo-box .logo img{
+		max-height: 60px;
+	}
 }
 
 @media only screen and (max-width: 599px){
@@ -1165,7 +1168,7 @@
 
 	.header-style-one .upper-row .logo-box{
 		display: block;
-		width: 100%;
+		width: auto;
 		text-align: center;
 	}
 

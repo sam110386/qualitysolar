@@ -16,13 +16,13 @@
                          <a href="mailto:info@qulitysolar.net"><span class="fa fa-envelope"></span>
                              info@qulitysolar.net</a>
                      </div>
-                     <ul class="social-links clearfix">
+                     <!--ul class="social-links clearfix">
                          <li><a href="#"><span class="fab fa-twitter"></span></a></li>
                          <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
                          <li><a href="#"><span class="fab fa-instagram"></span></a></li>
                          <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
                          <li><a href="#"><span class="fab fa-pinterest-p"></span></a></li>
-                     </ul>
+                     </ul-->
                  </div>
              </div>
          </div>
@@ -100,7 +100,7 @@
                                              </li>
                                              <li class="dropdown"><a href="{{route('solutions')}}">Solutions</a>
                                                  <ul>
-                                                     <li><a href="{{route('solutions')}}">AllServices</a></li>
+                                                     <li><a href="{{route('solutions')}}">All Services</a></li>
                                                      <!-- li><a href="http://t.commonsupport.xyz/strnix/installation-service.html">Installation
                                                              Services</a></li>
                                                      <li><a href="http://t.commonsupport.xyz/strnix/maintenance-service.html">Maintenanace
@@ -111,16 +111,19 @@
                                                              Services</a></li>
                                                      <li><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
                                                              Ev Charges</a></li -->
-                                                     <li><a href="{{route('solutions-solar')}}">Solar</a></li>
-                                                     <li><a href="{{route('solutions-battery')}}">Battery</a></li>
+                                                     <li><a href="">Residential</a></li>
+                                                     <li><a href="">Commercial</a></li>
+                                                     <li><a href="{{route('solutions-battery')}}">Batteries</a></li>
+                                                     <li><a href="">Detach/Reattach (Roof
+                                                             Replacement)</a></li>
                                                  </ul>
                                                  <div class="dropdown-btn"><span class="fa fa-angle-right"></span>
                                                  </div>
                                              </li>
-                                             <li><a href="/">Dealers</a>
+                                             <!--li><a href="/">Dealers</a-->
                                              </li>
                                              <li class="">
-                                                 <a href="/">Solar Process</a>
+                                                 <a href="{{route('solutions-solar')}}">Solar Process</a>
                                                  <?php /* <ul>
                                                      <li><a href="http://t.commonsupport.xyz/strnix/blog-grid.html">Blog
                                                              Grid Style</a></li>
@@ -133,15 +136,14 @@
                                                  </div>
                                                  */ ?>
                                              </li>
-                                             <li><a href="/">Careers</a>
-                                             </li>
+                                             <!--li><a href="/">Careers</a></li-->
                                              <li>
                                                  <a href="{{route('contact')}}">Contact Us</a>
                                              </li>
                                              <li><a href="/">EV Charging</a>
                                              </li>
                                              <li>
-                                                 <a href="/">
+                                                 <a href="{{route('contact')}}">
                                                      <span class="btn-txt">Free Consultation</span>
                                                      <span class="btn-icon">
                                                          <span class="icon flaticon-arrows-11"></span>

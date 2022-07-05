@@ -6481,7 +6481,7 @@ img.lazy-image.loaded {
 
 .main-footer .widgets-section {
     position: relative;
-    padding: 100px 0px 60px;
+    padding: 10px 0px 10px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
@@ -9398,7 +9398,7 @@ img.lazy-image.loaded {
 }
 
 .contact-section.contact-page {
-    padding: 100px 0px 0px;
+    padding: 10px 0px 0px;
     margin-bottom: 100px;
 }
 
@@ -14060,3 +14060,4 @@ img.lazy-image.loaded {
     font-style: italic;
     margin-bottom: 30px;
 }
+.icon img{max-width: 125px;max-height: 125px;}
