@@ -99,7 +99,7 @@
 </section>
 
 <!--Enquiry Section-->
-@include('partials.newfrontend.enquiry')
+
 @endsection
 @section('scripts')
 @parent
