@@ -21,7 +21,7 @@
                     <span class="dot"></span>
                 </div>
             </div>
-            <div class="text">Residential, Commercial, Battery Storage - We can do the all. And right from the first
+            <div class="text">Residential, Commercial, Battery Storage - We can do it all. And right from the first
                 time around. Each project is built directly exactly for your needs. No two solar installations are the
                 same and we make sure you get the service you deserve.</div>
         </div>

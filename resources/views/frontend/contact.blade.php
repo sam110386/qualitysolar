@@ -121,8 +121,7 @@
                                 <div class="icon"><span class="fa fa-phone fa-2x phone-icon-transform"></span></div>
                                 <strong>Phone Inquiry</strong>
                                 <ul class="info">
-                                    <li><a href="tel:+1-(222)-303-4500">+1 (222) 303 4500</a></li>
-                                    <li><a href="tel:0800-12345">0800 12345</a></li>
+                                    <li><a href="tel:+1-(214) 682-0660">+1 (214) 682-0660</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,8 +133,7 @@
                                 <div class="icon"><span class="fa fa-envelope fa-2x "></span></div>
                                 <strong>Send Email</strong>
                                 <ul class="info">
-                                    <li><a href="mailto:info@qualitysolor.com">info@qualitysolor.com</a></li>
-                                    <li><a href="mailto:Support@qualitysolor.com">Support@qualitysolor.com</a></li>
+                                    <li><a href="mailto:info@qulitysolar.net">info@qulitysolar.net</a></li>
                                 </ul>
                             </div>
                         </div>

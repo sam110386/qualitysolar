@@ -55,62 +55,14 @@
                                          <ul class="navigation clearfix">
                                              <li class="current ">
                                                  <a href="/">Home</a>
-                                                 <?php /* <ul>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/index.html">Home
-                                                             Solar Energy</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/index-2.html">Home
-                                                             Wind Power</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/index-3.html">Home
-                                                             Bio Energy</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/index-4.html">Home
-                                                             Fuel Energy</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/index-5.html">Home
-                                                             Hydro Power</a></li>
-                                                     <li class="dropdown"><a href="http://t.commonsupport.xyz/strnix/index.html">Header
-                                                             Styles</a>
-                                                         <ul>
-                                                             <li><a href="http://t.commonsupport.xyz/strnix/index.html">Header
-                                                                     Style One</a></li>
-                                                             <li><a href="http://t.commonsupport.xyz/strnix/index-2.html">Header
-                                                                     Style Two</a></li>
-                                                             <li><a href="http://t.commonsupport.xyz/strnix/index-3.html">Header
-                                                                     Style Three</a></li>
-                                                             <li><a href="http://t.commonsupport.xyz/strnix/index-4.html">Header
-                                                                     Style Four</a></li>
-                                                             <li><a href="http://t.commonsupport.xyz/strnix/index-5.html">Header
-                                                                     Style Five</a></li>
-                                                         </ul>
-                                                         <div class="dropdown-btn"><span class="fa fa-angle-right"></span></div>
-                                                     </li>
-                                                 </ul>
-                                                 <div class="dropdown-btn"><span class="fa fa-angle-right"></span>
-                                                 </div> */ ?>
+
                                              </li>
                                              <li class=""><a href="/about-us">Why Quality</a>
-                                                 <?php /* <ul>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/about.html">About
-                                                             Us</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/faqs.html">FAQ's</a>
-                                                     </li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/projects.html">Dedicated
-                                                             Projects</a></li>
-                                                 </ul>
-                                                 <div class="dropdown-btn"><span class="fa fa-angle-right"></span>
-                                                 </div> */ ?>
+
                                              </li>
                                              <li class="dropdown"><a href="{{route('solutions')}}">Solutions</a>
                                                  <ul>
                                                      <li><a href="{{route('solutions')}}">All Services</a></li>
-                                                     <!-- li><a href="http://t.commonsupport.xyz/strnix/installation-service.html">Installation
-                                                             Services</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/maintenance-service.html">Maintenanace
-                                                             Services</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/replacement-service.html">Replacement
-                                                             Services</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/commercial-service.html">Commercial
-                                                             Services</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/residential-service.html">Residential
-                                                             Ev Charges</a></li -->
                                                      <li><a href="">Residential</a></li>
                                                      <li><a href="">Commercial</a></li>
                                                      <li><a href="{{route('solutions-battery')}}">Batteries</a></li>
@@ -124,24 +76,14 @@
                                              </li>
                                              <li class="">
                                                  <a href="{{route('solutions-solar')}}">Solar Process</a>
-                                                 <?php /* <ul>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/blog-grid.html">Blog
-                                                             Grid Style</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/blog.html">Blog
-                                                             with Sidebar</a></li>
-                                                     <li><a href="http://t.commonsupport.xyz/strnix/blog-single.html">Blog
-                                                             Post Details</a></li>
-                                                 </ul>
-                                                 <div class="dropdown-btn"><span class="fa fa-angle-right"></span>
-                                                 </div>
-                                                 */ ?>
+
                                              </li>
-                                             <!--li><a href="/">Careers</a></li-->
+
                                              <li>
                                                  <a href="{{route('contact')}}">Contact Us</a>
                                              </li>
-                                             <li><a href="/">EV Charging</a>
-                                             </li>
+                                             <!--li><a href="/">EV Charging</a>
+                                             </li-->
                                              <li>
                                                  <a href="{{route('contact')}}">
                                                      <span class="btn-txt">Free Consultation</span>

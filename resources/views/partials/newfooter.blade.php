@@ -63,24 +63,24 @@
             <div class="row clearfix">
 
                 <!--Column-->
-                <div class="footer-column col-lg-3 col-md-5 col-sm-12">
+                <div class="footer-column col-lg-12">
                     <div class="footer-widget info-widget">
                         <div class="widget-title">
                             <h3>Contact Us</h3>
                         </div>
                         <div class="info">
                             <!--Info Block-->
-                            <div class="info-block">
+                            <!--div class="info-block">
                                 <div class="icon-box">
                                     <span class="icon">
                                         <span class="fa fa-comment-dots fa-2x "></span>
                                     </span>
                                 </div>
-                                <strong>Visit The Office</strong>
-                                <div class="info-text">102 Taily End Rd, NY</div>
-                            </div>
+                                <strong>Call Us</strong>
+                                <div class="info-text">+1 (214) 682-0660</div>
+                            </div -->
                             <!--Info Block-->
-                            <!--div class="info-block">
+                            <div class="info-block col-lg-3 pull-left">
                                 <div class="icon-box">
                                     <span class="icon">
                                         <span class="fa fa-phone fa-2x phone-icon-transform"></span>
@@ -89,11 +89,11 @@
                                 </div>
                                 <strong>Phone Inquiry</strong>
                                 <div class="info-text">
-                                    <a href="tel:(222)-303-4500">(222) 303 4500</a>
+                                    <a href="tel:+1 (214) 682-0660">(214) 682-0660</a>
                                 </div>
-                            </div -->
+                            </div>
                             <!--Info Block-->
-                            <div class="info-block">
+                            <div class="info-block col-lg-3 pull-left">
                                 <div class="icon-box">
                                     <span class="icon">
                                         <span class="fa fa-envelope fa-2x "></span>
@@ -104,7 +104,7 @@
                                     <a href="mailto:info@qualitysolar.net">info@qualitysolar.net</a>
                                 </div>
                             </div>
-                            <div class="info-block">
+                            <div class="info-block col-lg-3 pull-left">
                                 <a id="bbblink" class="" href="https://#bbbseal"
                                     title="Traffic File Complaint, Clothing, Dallas, TX"
                                     style="display: block;position: relative;overflow: hidden; width: 0px; height: 0px; margin: 0px; padding: 0px;"><img
@@ -129,6 +129,7 @@
                         </div>
                     </div>
                 </div>
+                <?php /*
                 <!--Column-->
                 <div class="big-column col-lg-6 col-md-7 col-sm-12">
                     <div class="row clearfix">
@@ -206,7 +207,7 @@
                         </div>
                     </div>
                 </div>
-
+                */ ?>
             </div>
         </div>
     </div>
