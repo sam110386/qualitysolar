@@ -71,7 +71,8 @@
                     <span class="txt">Or if you need quick assistance</span>
                 </div>
                 <div class="info">Call Us 24/7 For Customer Support At <span
-                        class="fa fa-phone phone-icon-transform"></span> <a href="tel:(222)-303-4500">(222) 303 4500</a>
+                        class="fa fa-phone phone-icon-transform"></span> <a href="tel:+1 (214) 682-0660">+1 (214)
+                        682-0660</a>
                 </div>
             </div>
         </div>
